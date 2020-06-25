@@ -1,13 +1,69 @@
-nav {
-    height: 45px;
+/* Generalstyles  */
+
+.complete_screen {
+    height: 100vh;
 }
 
-u {
+.line {
+    height: 1%;
+    background-color: #FCC000;
+}
+
+.color_blue {
+    color: #014170;
+}
+
+.color_search {
+    background-color: #727C8E;
+}
+
+
+/*styles of headere component */
+
+.header_nav {
+    height: 7%;
     width: 100%;
+    background-color: black;
+    color: #FCC000;
 }
 
-.menu {
-    height: 100%;
-    align-items: center;
-    padding-left: 1px;
+.header_leter {
+    color: #FCC000;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+}
+
+
+/*styles of body component */
+
+.body_content {
+    width: auto;
+    height: 90vh;
+}
+
+.body_bg {
+    background-color: #014170;
+}
+
+.body_button {
+    background-color: #FCC000;
+    margin-top: 18em;
+    height: auto;
+    font-size: 14px;
+}
+
+.body_heigth {
+    height: 93vh;
+}
+
+.body_menu {
+    color: #FCC000;
+    padding-top: 1em;
+    font-size: 13.2px;
+    list-style: none;
+}
+
+.body_icon {
+    width: 20%;
+    margin-right: 0.5em;
 }
