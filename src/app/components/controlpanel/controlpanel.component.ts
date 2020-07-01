@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsService } from '../../services/items.service';
 
 @Component({
   selector: 'app-controlpanel',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControlpanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataItems: ItemsService) { }
 
   ngOnInit(): void {
+    this.getlistItems();
   }
 
+  getlistItems(){
+    this.dataItems.getItems().subscribe(items => console.log(items))
+  }
 }

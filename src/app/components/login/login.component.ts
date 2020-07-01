@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         alert('Correcto!');
         localStorage.setItem('accessToken', data.jwt);
         localStorage.setItem('currentUser', JSON.stringify(data.user));
-        this.router.navigate(['/protected']);
+        this.router.navigate(['/controlpane']);
       },
       error: error => {
         alert('Correo o contraseña inválidos!');

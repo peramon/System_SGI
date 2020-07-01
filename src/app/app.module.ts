@@ -13,24 +13,24 @@ import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
-<<<<<<< HEAD
-import { APP_ROUTING } from './app.routes';
+
 import { ProtectedComponent } from './components/protected/protected.component';
 import { InterceptorService } from './interceptors/interceptor.service';
 // import {
 //   MsalModule,
 //   MsalInterceptor
 // } from '@azure/msal-angular';
-=======
 import { ControlpanelComponent } from './components/controlpanel/controlpanel.component';
 import { GestioninventarioComponent } from './components/gestioninventario/gestioninventario.component';
 import { GestionprestamosComponent } from './components/gestionprestamos/gestionprestamos.component';
 import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
-import { AppRoutingModule } from '../app-routing.module';
+import { ShareComponent } from './components/share/share.component';
 
 
 
->>>>>>> 7804dda606077dfe12cd2201ea3302fad7b245a5
+
+
+
 
 // const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
@@ -41,8 +41,8 @@ import { AppRoutingModule } from '../app-routing.module';
     BodyComponent,
     FooterComponent,
     LoginComponent,
-<<<<<<< HEAD
     ProtectedComponent,
+    ShareComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,20 +55,13 @@ import { AppRoutingModule } from '../app-routing.module';
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true
-    }
-=======
+    },
     ControlpanelComponent,
     GestioninventarioComponent,
     GestionprestamosComponent,
     NotificacionesComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    APP_ROUTING
 
->>>>>>> 7804dda606077dfe12cd2201ea3302fad7b245a5
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

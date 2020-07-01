@@ -1,111 +1,133 @@
     #sgi-logo {
-    width: 100%;
-    max-width: 50px;
-}
-
-.login-banner {
-    background-color: rgb(216, 216, 216);
-    /* Generalstyles  */
+        width: 100%;
+        max-width: 50px;
+    }
+    
+    .login-banner {
+        background-color: rgb(216, 216, 216);
+        /* Generalstyles  */
+    }
+    
     .complete_screen {
         height: 100vh;
     }
+    
     .line {
         height: 1%;
         background-color: #FCC000;
     }
+    
     .color_blue {
         color: #014170;
     }
+    
     .color_search {
         background-color: #727C8E;
     }
     /*styles of headere component */
+    
     .header_nav {
         height: 7%;
         width: 100%;
         background-color: black;
         color: #FCC000;
     }
+    
     .header_leter {
         color: #FCC000;
         padding-top: 0.5em;
         padding-left: 0.5em;
     }
     /*styles of body component */
+    
     .body_content {
         width: auto;
         height: 90vh;
     }
+    
     .body_bg {
         background-color: #014170;
     }
+    
     .body_button {
         background-color: #FCC000;
         margin-top: 18em;
         height: auto;
         font-size: 14px;
     }
+    
     .body_heigth {
         height: 93vh;
     }
+    
     .body_menu {
         color: #FCC000;
         padding-top: 1em;
         font-size: 13.2px;
         list-style: none;
     }
+    
     .body_icon {
         width: 20%;
         margin-right: 0.5em;
     }
     /*Login */
+    
     .login_widht {
         height: 100vh;
         width: 100%;
     }
+    
     .login_bg {
         background-color: #FCC000;
     }
+    
     .login_form {
         max-width: 330px;
         padding: 15px;
     }
+    
     .login_account {
         background-color: #014170;
         -moz-box-shadow: 0px 2px 2px black;
         -webkit-box-shadow: 0px 2px 2px black;
         box-shadow: 0px 2px 2px black;
     }
+    
     .login_center {
         display: flex;
         align-items: center;
         justify-content: center;
     }
+    
     .login_opacity {
         background-color: #014170;
         opacity: 0.8;
         /* Opacidad 60% */
     }
+    
     .login_sgi {
         background-color: black;
         color: #FCC000;
         padding-top: 2em;
         height: 40%;
     }
-    .login_img {}
     /* Animaciones*/
+    
     .animated {
         -webkit-animation-duration: 1s;
         animation-duration: 1s;
         -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
     }
+    
     .fast {
         -webkit-animation-duration: 0.4s;
         animation-duration: 0.4s;
         -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
     }
+    
     @keyframes fadeIn {
         from {
             opacity: 0;
@@ -114,6 +136,7 @@
             opacity: 1;
         }
     }
+    
     .fadeIn {
         animation-name: fadeIn;
     }

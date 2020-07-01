@@ -12,7 +12,10 @@ export class InterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const headers = new HttpHeaders();
     if (localStorage.getItem('accessToken') !== null) {
-      headers.append('Authorization', localStorage.getItem('accessToken'));
+      // headers.append('Authorization', localStorage.getItem('accessToken'));
+      // headers.append('Authorization', `Bearer ${localStorage.getItem('accessToken')})`;
+      headers.append('Authorization', `Bearer ${localStorage.getItem('accessToken')}`);
+      console.log(localStorage);
     }
     const reqClone = req.clone({
       headers

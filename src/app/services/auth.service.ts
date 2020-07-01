@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -15,5 +14,6 @@ export class AuthService {
    logIn(credentials: any): Observable<any>{
       return this.http.post(`${environment.apiUrl}/auth/local`, credentials);
    }
+
 
 }
