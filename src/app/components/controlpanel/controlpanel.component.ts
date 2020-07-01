@@ -15,6 +15,6 @@ export class ControlpanelComponent implements OnInit {
   }
 
   getlistItems(){
-    this.dataItems.getItems().subscribe(items => console.log(items))
+    this.dataItems.getItems().subscribe(items => console.log(items));
   }
 }
