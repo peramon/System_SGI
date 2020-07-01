@@ -1,13 +1,8 @@
-nav {
-    height: 45px;
-}
-
-u {
+#sgi-logo {
     width: 100%;
+    max-width: 50px;
 }
 
-.menu {
-    height: 100%;
-    align-items: center;
-    padding-left: 1px;
+.login-banner {
+    background-color: rgb(216, 216, 216);
 }

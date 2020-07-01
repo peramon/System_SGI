@@ -1,0 +1,24 @@
+.login100-more {
+    width: calc(100% - 560px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+form {
+    padding: 10%;
+}
+
+.txt2 {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #999999;
+}
+
+.microsoft-btn {
+    border-style: solid;
+    border-color: #8C8C8C;
+    border-width: 1px;
+}
