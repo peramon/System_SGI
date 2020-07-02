@@ -45,7 +45,10 @@ import { ShareComponent } from './components/share/share.component';
     LoginComponent,
     ProtectedComponent,
     ShareComponent,
-
+    ControlpanelComponent,
+    GestioninventarioComponent,
+    GestionprestamosComponent,
+    NotificacionesComponent
   ],
   imports: [
     BrowserModule,
@@ -60,10 +63,6 @@ import { ShareComponent } from './components/share/share.component';
       useClass: InterceptorService,
       multi: true
     },
-    ControlpanelComponent,
-    GestioninventarioComponent,
-    GestionprestamosComponent,
-    NotificacionesComponent
   ],
 
   bootstrap: [AppComponent]

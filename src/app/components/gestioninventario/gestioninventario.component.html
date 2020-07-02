@@ -1,5 +1,17 @@
-<ul>
-    <li *ngFor="let recurso of recursos">
-        <h3>{{recurso.name}}</h3>
-    </li>
-</ul>
+<div *ngFor="let laboratorio of laboratorios">
+    <h1>{{laboratorio.name}}</h1>
+    <div *ngFor="let recurso of recursos" class="card text-center" style="width: 25rem;" class="container">
+        <div class="card w-100">
+            <div class="card-body">
+                <p>{{recurso.name}}</p>
+                <img class="text-center" [src]="recurso.img" alt="Card image cap" width="60%" alt="">
+                <p class="card-text text-center">{{recurso.description}}</p>
+                <a href="#" class="btn btn-primary text-center">Detalles</a>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

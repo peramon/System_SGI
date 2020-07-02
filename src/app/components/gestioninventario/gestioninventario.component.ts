@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
-import { ItemInterface } from '../../models/item-einterface';
+import { ItemInterface } from '../../models/item-interface';
+import { LabService } from '../../services/lab.service';
+import { LabInterface } from '../../models/lab-interface';
 
 
 @Component({
@@ -11,14 +13,16 @@ import { ItemInterface } from '../../models/item-einterface';
 export class GestioninventarioComponent implements OnInit {
 
   recursos: ItemInterface[] = [];
+  laboratorios: LabInterface[] = [];
 
-  constructor(private dataItems: ItemsService) { }
+  constructor(private dataItems: ItemsService, private dataStore: LabService) { }
   //private items: ItemInterface;
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.getListItems();
   }
 
   getListItems(){
+    this.getLab();
     this.dataItems.getItems().subscribe(items => {
       console.log(items);
       this.recursos = items;
@@ -28,6 +32,13 @@ export class GestioninventarioComponent implements OnInit {
       console.log(this.items);
     });*/
     //this.dataItems.getItems().subscribe((items: ItemInterface) => (this.items = items ));
+  }
+
+  getLab(){
+    this.dataStore.getLabs().subscribe((labs) => {
+      console.log(labs);
+      this.laboratorios = labs;
+      });
   }
 
 }
