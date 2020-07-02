@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 // Rutas
 import { APP_ROUTING } from './app.routes';
@@ -32,6 +33,7 @@ import { ShareComponent } from './components/share/share.component';
 
 
 
+
 // const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 @NgModule({
@@ -43,12 +45,14 @@ import { ShareComponent } from './components/share/share.component';
     LoginComponent,
     ProtectedComponent,
     ShareComponent,
+
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [
     {

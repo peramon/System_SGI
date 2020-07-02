@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
+import  Swal  from 'sweetalert2';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +15,9 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private builder: FormBuilder, private authService: AuthService, private router: Router) { }
+
+  constructor(private builder: FormBuilder, private authService: AuthService, private router: Router) { } 
+ 
 
   ngOnInit(): void {
     this.loginForm = this.builder.group({
@@ -27,13 +32,22 @@ export class LoginComponent implements OnInit {
       password: values.password
     }).subscribe({
       next: data => {
-        alert('Correcto!');
+        Swal.fire(
+          'Ingreso exitoso!',
+          'click para continuar!',
+          'success'
+        );
         localStorage.setItem('accessToken', data.jwt);
         localStorage.setItem('currentUser', JSON.stringify(data.user));
-        this.router.navigate(['/controlpane']);
+        this.router.navigate(['share']);
       },
       error: error => {
-        alert('Correo o contraseña inválidos!');
+        Swal.fire({
+          icon: 'error',
+          title: 'No se encuentra el usuario',
+          text: 'Contraseña o correo incorrectos'
+          
+        })
         console.error('There was an error!', error);
         }
     });

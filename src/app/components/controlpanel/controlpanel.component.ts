@@ -11,10 +11,8 @@ export class ControlpanelComponent implements OnInit {
   constructor(private dataItems: ItemsService) { }
 
   ngOnInit(): void {
-    this.getlistItems();
+ 
   }
 
-  getlistItems(){
-    this.dataItems.getItems().subscribe(items => console.log(items));
-  }
+
 }
