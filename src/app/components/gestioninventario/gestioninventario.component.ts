@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
 import { ItemInterface } from '../../models/item-interface';
@@ -15,7 +16,7 @@ export class GestioninventarioComponent implements OnInit {
   recursos: ItemInterface[] = [];
   laboratorios: LabInterface[] = [];
 
-  constructor(private dataItems: ItemsService, private dataStore: LabService) { }
+  constructor(private router: Router,private dataItems: ItemsService, private dataStore: LabService) { }
   //private items: ItemInterface;
   ngOnInit(): void {  
     this.getListItems();
@@ -39,6 +40,10 @@ export class GestioninventarioComponent implements OnInit {
       console.log(labs);
       this.laboratorios = labs;
       });
+  }
+
+  getList(){
+    this.router.navigate(['share/gestioninventario/itemList']);
   }
 
 }

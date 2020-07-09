@@ -1,13 +1,23 @@
-<div *ngFor="let laboratorio of laboratorios">
-    <span class="display-4">{{laboratorio.name}}</span>
-    <div class="row">
-        <div *ngFor="let recurso of recursos" class="col-3 card text-center" style="width: 25rem;" class="container">
-            <div class="card w-100">
-                <div class="card-body">
-                    <strong>{{recurso.name}}</strong>
-                    <img class="text-center" [src]="recurso.img" alt="Card image cap" width="60%" alt="">
-                    <p class="card-text text-center">{{recurso.description}}</p>
-                    <a href="#" class="btn btn-primary text-center">Ver Detalles</a>
+<div class=" " *ngFor="let laboratorio of laboratorios">
+    <div class="header_nav">
+        <h2 class="mx-4 ">{{laboratorio.name}}</h2>
+    </div>
+    <div>
+        <a href="#" class="btn btn-info border-secondary text-white my-3 mx-4">Nuevo Recurso</a>
+    </div>
+    <div class="row ">
+        <div *ngFor="let recurso of recursos " class=" border-success col-3 card text-center " style="width: 25rem; " class="container ">
+            <div class="my-4 card w-100 text-center ">
+                <div class="card-header bg-warning border-secondary "> </div>
+                <div class="card-body ">
+                    <!--<img class="card-img-top " [src]="recurso.img " alt="Card image cap " width="65% " alt="45 ">-->
+                    <img src="assets/img/background_login6.png " width=" " height=" " alt=" " class="img-fluid ">
+                    <h5 class="card-title ">{{recurso.name}}</h5>
+                    <p class="card-text text-center ">{{recurso.description}}</p>
+                    <div class="card-footer bg-transparent ">
+                        <a href="# " class="btn btn-light border-secondary text-info " [routerLink]="[ 'itemList',recurso.id] ">Ver Detalles</a>
+                    </div>
+
 
                 </div>
             </div>

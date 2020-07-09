@@ -18,6 +18,7 @@ const APP_ROUTES: Routes = [
     {path: 'share/gestioninventario', component: GestioninventarioComponent},
     {path: 'share/gestionprestamo', component: GestionprestamosComponent},
     {path: 'share/notificaciones', component: NotificacionesComponent},
+    {path: 'share/gestioninventario/itemList/:itemId', component: GestionInListComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'controlpanel' }
    
 ];
@@ -29,6 +30,7 @@ import { GestioninventarioComponent } from './components/gestioninventario/gesti
 import { GestionprestamosComponent } from './components/gestionprestamos/gestionprestamos.component';
 import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
 import { ShareComponent } from './components/share/share.component';
+import { GestionInListComponent } from './components/gestion-in-list/gestion-in-list.component';
 
 
 

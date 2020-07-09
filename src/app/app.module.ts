@@ -26,6 +26,7 @@ import { GestioninventarioComponent } from './components/gestioninventario/gesti
 import { GestionprestamosComponent } from './components/gestionprestamos/gestionprestamos.component';
 import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
 import { ShareComponent } from './components/share/share.component';
+import { GestionInListComponent } from './components/gestion-in-list/gestion-in-list.component';
 
 
 
@@ -48,7 +49,8 @@ import { ShareComponent } from './components/share/share.component';
     ControlpanelComponent,
     GestioninventarioComponent,
     GestionprestamosComponent,
-    NotificacionesComponent
+    NotificacionesComponent,
+    GestionInListComponent
   ],
   imports: [
     BrowserModule,
