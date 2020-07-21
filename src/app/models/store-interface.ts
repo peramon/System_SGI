@@ -1,5 +1,5 @@
 export interface StoreInterface{
-    "id": string;
-    "acquisition_date": string;
+    id: string;
+    acquisition_date: string;
 
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LabService } from '../../services/lab.service';
-import { ItemInterface } from '../../models/item-interface';
+import ItemInterface from '../../models/item/item-interface';
 import { LabInterface } from 'src/app/models/lab-interface';
+import { StoreItemService } from '../../services/store-item.service';
 
 @Component({
   selector: 'app-userresources',
@@ -11,32 +12,27 @@ import { LabInterface } from 'src/app/models/lab-interface';
 })
 export class UserresourcesComponent implements OnInit {
 
-  recursos: ItemInterface[] = [];
+  recursos: any[];
   // laboratorio: LabInterface[] = [];
   laboratorio: string;
 
-  constructor(private router: ActivatedRoute, private storeItem: LabService) { }
+  constructor(private router: ActivatedRoute, private storeItem: LabService, private storeItemService: StoreItemService) { }
 
   idStore = this.router.snapshot.params.storeId;
 
   ngOnInit(): void {
-    console.log('Id', this.idStore);
     this.getStoreItems();
     this.getStoreId();
   }
 
-  getStoreId(){
-    this.storeItem.getLabId(this.idStore).subscribe(labs=>{
+  getStoreId() {
+    this.storeItem.getLabId(this.idStore).subscribe(labs => {
       this.laboratorio = labs.name;
-      console.log('Laboratorios',labs.name)
-    })
-  }
-  getStoreItems(){
-    this.storeItem.getStoreResource(this.idStore).subscribe(items => {
-      this.recursos = items;
-      console.log('Recursos',this.recursos)
-
     });
+  }
+  async getStoreItems() {
+    this.recursos = await this.storeItemService.findStoreItemsByStoreId(this.idStore);
+    console.log({resources: this.recursos});
   }
 
 }

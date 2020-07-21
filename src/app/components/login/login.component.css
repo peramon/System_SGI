@@ -30,3 +30,7 @@ form {
 .radius {
     border-radius: 1em;
 }
+
+.login_bg {
+    height: 100%;
+}

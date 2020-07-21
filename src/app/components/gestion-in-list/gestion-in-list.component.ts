@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsService } from '../../services/items.service';
-import { ItemInterface } from '../../models/item-interface';
+import ItemInterface from '../../models/item/item-interface';
 import { ItemIdInterface } from 'src/app/models/itemId-interface';
+import { faArrowLeft, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -12,9 +14,15 @@ import { ItemIdInterface } from 'src/app/models/itemId-interface';
 })
 export class GestionInListComponent implements OnInit {
 
-  recurso: ItemInterface[] = [];
-  items:ItemIdInterface[] = [];
-  num_items:number;
+  recurso: ItemInterface;
+  itemsN: number;
+  disponibles = 0;
+  prestados = 0;
+  enReparacion = 0;
+
+  faArrowLeft = faArrowLeft;
+  faPlusCircle = faPlusCircle;
+
 
   constructor(private router: ActivatedRoute, private itemService: ItemsService) { }
 
@@ -24,20 +32,27 @@ export class GestionInListComponent implements OnInit {
     this.getListItemId();
   }
 
-  getListItems(){
+  getListItems() {
     console.log(this.itemService.getItemId(this.idProducto));
   }
 
-  getListItemId(){
-    this.itemService.getItemId(this.idProducto).subscribe(items => {
+  getListItemId() {
+    this.itemService.getItemId(this.idProducto).subscribe((items: any) => {
       this.recurso = items;
-      console.log('Recursos',this.recurso)
-      console.log('Stores',this.recurso.store_items)
-      //console.log('Stores',this.recurso.store_items.id)
-      this.items = this.recurso.store_items;
-      console.log(this.items);
-      //console.log('Items',this.item.length)
-      this.num_items = this.items.length;
+      const storeItems = this.recurso.store_items;
+
+      storeItems.forEach(sitem => {
+        console.log(sitem.status)
+        if (sitem.status === 1) {
+          this.disponibles++;
+        } else if (sitem.status === 2) {
+          this.prestados++;
+        } else {
+          this.enReparacion++;
+        }
+      });
+
     });
   }
+
 }

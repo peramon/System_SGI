@@ -1,67 +1,68 @@
-<div class="">
-    <div class="my-2 container">
-        <h2 class=" color">Detalle del Recurso</h2>
-        <div class="row my-2 mx-1 radius">
-            <div class="col-sm-4 my-3 text-center  fondo radius">
-                <img src="assets/img/background_login6.png " width="50%" height=" " alt="Item del laboratorio" class="img-fluid ">
-                <p class="color">{{num_items}} Unidades</p>
-            </div>
-            <div class="col-sm-7 mx-4 my-3 fondo radius">
-                <h5 class="my-2">{{recurso.name}}</h5>
-                <p><strong>Codigo: </strong>{{recurso.id}}</p>
-                <p>{{recurso.description}}</p>
-            </div>
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="/share/gestioninventario">
+            <fa-icon [icon]="faArrowLeft"></fa-icon>
+        </a>
+        <a class="nav-item nav-link">{{recurso.name}}</a>
+    </div>
+</nav>
+<div class="container">
+    <h2 class=" color">Detalle: {{recurso.name}}</h2>
+    <div class="row my-2 mx-1 radius">
+        <div class="col-sm-4 my-3 text-center  fondo radius">
+            <img src="assets/img/background_login6.png " width="50%" height=" " alt="Item del laboratorio" class="img-fluid ">
+            <p class="color">Total de Unidades {{recurso.store_items.length}}</p>
         </div>
-        <div class="col-11">
-            <nav class="nav">
-                <small><a class="nav-link bg-danger text-white radius">Unidades disponibles: {{num_items}}</a></small>
-                <small><a class="nav-link bg-danger text-white radius mx-2">Unidades prestadas: 0</a></small>
-                <small><a class="nav-link bg-danger text-white radius mx-2">Unidades extraviadas: 0</a></small>
-                <button class="btn btn-success radius ml-auto ">
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
-                    </svg>
-                     Nuevo</button>
-            </nav>
+        <div class="col-sm-7 mx-4 my-3 fondo radius">
+            <h5 class="my-2">{{recurso.name}}</h5>
+            <p><strong>Descripción: </strong>{{recurso.description}}</p>
         </div>
-        <div class="my-4 mx-2 fondo  radius text-center col-11">
-            <br>
-            <h5 class=" radius"><strong> ITEMS</strong></h5>
-            <table class="table">
-                <thead>
-                    <tr class="bg-dark text-white">
-                        <th scope="col">Código</th>
-                        <th scope="col">Nombre del recurso</th>
-                        <th scope="col">Observación</th>
-                        <th scope="col">Disponible</th>
-                        <th>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let item of recurso.store_items">
-                    <tr>
-                        <td class="bg-light">{{item.id}}</td>
-                        <td class="bg-light">NA</td>
-                        <td class="bg-light">{{item.acquisition_date}}</td>
-                        <td class="bg-light" *ngIf="item.status == 1">Si</td>
-                        <td class="bg-light">
-                            <button class="mx-2 btn-info radius">
+    </div>
+    <div class="col">
+        <nav class="nav">
+            <small><a class="nav-link text-white radius bg-success">Unidades disponibles: {{disponibles}}</a></small>
+            <small><a class="nav-link  text-white radius mx-2 bg-warning">Unidades prestadas: {{prestados}}</a></small>
+            <small><a class="nav-link text-white radius mx-2 bg-danger">Unidades en reparación: {{ enReparacion }}</a></small>
+            <button class="btn btn-success radius ml-auto "> <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo</span> </button>
+        </nav>
+    </div>
+    <div class="my-4 mx-2 fondo  radius text-center col-12">
+        <span class="h5"><strong>Items</strong></span>
+        <table class="table table-striped">
+            <thead>
+                <tr class="bg-dark text-white">
+                    <th scope="col">#</th>
+                    <th scope="col">Código</th>
+                    <th scope="col">Fecha de adquisición</th>
+                    <th scope="col">Estado</th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of recurso.store_items;let i = index">
+                <tr>
+                    <td class="bg-light">{{i + 1}}</td>
+                    <td class="bg-light">{{item.id}}</td>
+                    <td class="bg-light">{{item.acquisition_date | date}}</td>
+                    <td class="bg-light" *ngIf="item.status == 1">Disponible</td>
+                    <td class="bg-light" *ngIf="item.status == 2">Prestado</td>
+                    <td class="bg-light" *ngIf="item.status == 3">En reparación</td>
+                    <td class="bg-light">
+                        <button class="mx-2 btn-info radius">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                   </svg>
                                 Modificar</button>
-                            <button class="mx-2 btn-danger radius">
+                        <button class="mx-2 btn-danger radius">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                   </svg>
                                 Eliminar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -31,6 +31,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { UserComponent } from './components/user/user.component';
 import { UserlabComponent } from './components/userlab/userlab.component';
 import { UserresourcesComponent } from './components/userresources/userresources.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -67,7 +68,8 @@ import { UserresourcesComponent } from './components/userresources/userresources
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [
     {

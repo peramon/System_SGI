@@ -9,7 +9,7 @@
     }
     
     .complete_screen {
-        height: 100vh;
+        /* height: 100vh; */
     }
     
     .line {
@@ -42,7 +42,7 @@
     
     .body_content {
         width: auto;
-        height: 90vh;
+        height: auto;
     }
     
     .body_bg {
@@ -73,9 +73,12 @@
     }
     /*Login */
     
-    .login_widht {
-        height: 100vh;
-        width: 100%;
+    .login_position {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
     }
     
     .login_bg {
@@ -146,4 +149,17 @@
         bottom: 0;
         left: 0;
         right: 0;
+    }
+    
+    .no-padding {
+        padding: 0 !important;
+    }
+    
+    .search-bar {
+        margin: 1em;
+    }
+    
+    .row {
+        width: 100%;
+        height: auto;
     }

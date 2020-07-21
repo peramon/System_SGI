@@ -1,9 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
-import { ItemInterface } from '../../models/item-interface';
+import ItemInterface from '../../models/item/item-interface';
 import { LabService } from '../../services/lab.service';
 import { LabInterface } from '../../models/lab-interface';
+
+import { faArrowLeft, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,44 +15,45 @@ import { LabInterface } from '../../models/lab-interface';
 })
 export class GestioninventarioComponent implements OnInit {
 
-  recursos: ItemInterface[] = [];
-  laboratorios: LabInterface[] = [];
+  recursos: ItemInterface[];
+  laboratorios: LabInterface;
   isOn: boolean;
 
-  constructor(private router: Router,private dataItems: ItemsService, private dataStore: LabService) { }
+  // Icons
+  faArrowLeft = faArrowLeft;
+  faPlusCircle = faPlusCircle;
+
+  constructor(private router: Router, private dataItems: ItemsService, private dataStore: LabService) { }
   filterPost = '';
   //private items: ItemInterface;
-  ngOnInit(): void {  
+  ngOnInit(): void {
     this.getListItems();
   }
 
-  getListItems(){
-    //this.getLab();
-    this.laboratorios  = JSON.parse(localStorage.getItem('lab'))
+  async getListItems() {
+    this.laboratorios = JSON.parse(localStorage.getItem('lab'));
     /*this.dataItems.getItems().subscribe(items => {
       console.log(items);
       this.recursos = items;
     });*/
-    this.dataStore.getStoreResource(this.laboratorios.id).subscribe(items => {
-      console.log(items);
-      this.recursos = items;
-    });
-   /* this.dataItems.getItems().subscribe((resp: any) => {
-      this.items = resp;
-      console.log(this.items);
-    });*/
+    this.recursos = await this.dataStore.getStoreItems(this.laboratorios.id);
+    console.log({ recursos: this.recursos });
+    /* this.dataItems.getItems().subscribe((resp: any) => {
+       this.items = resp;
+       console.log(this.items);
+     });*/
     //this.dataItems.getItems().subscribe((items: ItemInterface) => (this.items = items ));
   }
 
-/*  getLab(){
-    this.laboratorios  = JSON.parse(localStorage.getItem('lab'));
-   /* this.dataStore.getLabId(id).subscribe((labs) => {
-      console.log('TestLab',labs);
-      this.laboratorios = labs;
-      });
-  }*/
+  /*  getLab(){
+      this.laboratorios  = JSON.parse(localStorage.getItem('lab'));
+     /* this.dataStore.getLabId(id).subscribe((labs) => {
+        console.log('TestLab',labs);
+        this.laboratorios = labs;
+        });
+    }*/
 
-  getList(){
+  getList() {
     this.router.navigate(['share/gestioninventario/itemList']);
   }
 

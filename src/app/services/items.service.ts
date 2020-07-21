@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ItemInterface } from '../models/item-interface';
+import ItemInterface from '../models/item/item-interface';
 import { ItemIdInterface } from '../models/itemId-interface';
 
 
@@ -13,7 +13,7 @@ import { ItemIdInterface } from '../models/itemId-interface';
 })
 export class ItemsService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   items: Observable<any>;
   item: Observable<any>;
@@ -22,20 +22,20 @@ export class ItemsService {
     'Content-Type': 'application/json'
   });
 
-   getItems(){
+  getItems() {
     const urlItems = `${environment.apiUrl}/items`;
     return this.http.get<ItemInterface[]>(urlItems);
   }
 
-  getItemId(id: string){
+  getItemId(id: string) {
     const urlApiI = `${environment.apiUrl}/items/${id}`;
     return this.item = this.http.get<ItemIdInterface[]>(urlApiI);
   }
 
-  saveItem(item: ItemInterface): Observable<ItemInterface>{
+  saveItem(item: ItemInterface): Observable<ItemInterface> {
     const urlApi = `${environment.apiUrl}/items`;
     return this.http.post<ItemInterface>(urlApi, item)
-    .pipe(map(data => data));
+      .pipe(map(data => data));
   }
 
 }
