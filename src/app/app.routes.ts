@@ -1,3 +1,4 @@
+import { UserresourcesComponent } from './components/userresources/userresources.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { Component } from '@angular/core';
@@ -13,12 +14,14 @@ const APP_ROUTES: Routes = [
     { path: '',   redirectTo: '/login', pathMatch: 'full' },
     { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
     { path: '**', pathMatch: 'full', redirectTo: 'Pane' },
-     {path: 'share', component: ShareComponent},
-    {path: 'share/controlpanel', component: ControlpanelComponent},
-    {path: 'share/gestioninventario', component: GestioninventarioComponent},
-    {path: 'share/gestionprestamo', component: GestionprestamosComponent},
-    {path: 'share/notificaciones', component: NotificacionesComponent},
-    {path: 'share/gestioninventario/itemList/:itemId', component: GestionInListComponent},
+     {path: 'share', component: ShareComponent, canActivate: [AuthGuard]},
+    {path: 'share/controlpanel', component: ControlpanelComponent, canActivate: [AuthGuard]},
+    {path: 'share/gestioninventario', component: GestioninventarioComponent, canActivate: [AuthGuard]},
+    {path: 'share/gestionprestamo', component: GestionprestamosComponent, canActivate: [AuthGuard]},
+    {path: 'share/notificaciones', component: NotificacionesComponent,canActivate: [AuthGuard]},
+    {path: 'share/userlab', component: UserlabComponent, canActivate: [AuthGuard]},
+    {path: 'share/userlab/store/:storeId', component: UserresourcesComponent, canActivate: [AuthGuard]},
+    {path: 'share/gestioninventario/itemList/:itemId', component: GestionInListComponent, canActivate: [AuthGuard]},
     {path: '**', pathMatch: 'full', redirectTo: 'controlpanel' }
    
 ];
@@ -31,6 +34,7 @@ import { GestionprestamosComponent } from './components/gestionprestamos/gestion
 import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
 import { ShareComponent } from './components/share/share.component';
 import { GestionInListComponent } from './components/gestion-in-list/gestion-in-list.component';
+import { UserlabComponent } from './components/userlab/userlab.component';
 
 
 

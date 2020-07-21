@@ -1,0 +1,35 @@
+<div>
+    <div class="mx-4 ">
+        <div class="input-group mb-2">
+            <h3 class="my-2 color">
+                Buscar
+            </h3>
+            <input type="text" class="mx-4 my-2 search form-control  " name="filterPost" placeholder="Buscar por nombre">
+            <!--<input type="text" class="mx-4 my-2 search form-control bg-secondary " name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">-->
+
+        </div>
+    </div>
+
+    <div class="row ">
+        <div *ngFor="let laboratorio of laboratorios" class=" border-success col-3 card text-center " style="width: 25rem; " class="container ">
+            <div class="my-4 card w-100 text-center ">
+                <div class="card-header bg-info border-secondary "> </div>
+                <div class="card-body ">
+                    <h5 class="card-title "><strong>{{laboratorio.name}}</strong></h5>
+                    <!--<img class="card-img-top " [src]="recurso.img " alt="Card image cap " width="65% " alt="45 ">-->
+                    <img src="assets/img/laboratory.png " width=" " height=" " alt="Laboratorio" class="img-fluid ">
+                    <p class="card-text text-center ">{{laboratorio.description}}</p>
+                    <p class="card-text text-center "><strong>Ubicación: </strong>{{laboratorio.location}}</p>
+                    <div class="card-footer bg-transparent ">
+                        <a href="# " class="btn btn-light border-secondary text-info " [routerLink]="[ 'store',laboratorio.id]">Ingresar</a>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

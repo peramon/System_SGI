@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-
 import  Swal  from 'sweetalert2';
 
 
@@ -20,6 +19,7 @@ export class LoginComponent implements OnInit {
  
 
   ngOnInit(): void {
+  
     this.loginForm = this.builder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -46,10 +46,10 @@ export class LoginComponent implements OnInit {
           icon: 'error',
           title: 'No se encuentra el usuario',
           text: 'Contraseña o correo incorrectos'
-          
         })
         console.error('There was an error!', error);
         }
     });
   }
+
 }

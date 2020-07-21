@@ -11,9 +11,9 @@
     </div>
 
     <div class="col-8 text-center   login_center">
-        <div class="col-sm-5  login_account">
-            <img src="./assets/icon's/icon_user.png" class="my-1" alt="">
-            <form [formGroup]="loginForm" (ngSubmit)="send(loginForm.value)" class="login_form login_opacity text-center">
+        <div class="col-sm-5 fondo login_account">
+            <img src="./assets/icon's/icon_user.png" class="my-3" alt="">
+            <form [formGroup]="loginForm" (ngSubmit)="send(loginForm.value)" class="login_form  text-center">
                 <div class="form-group ">
 
                     <input formControlName="email" type="email" class="form-control" placeholder="Email">
@@ -25,7 +25,7 @@
                     <span class="small text-white" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">Es necesario ingresar la contraseña</span>
                 </div>
                 <div class="text-center">
-                    <button [disabled]="loginForm.invalid" type="submit" class="my-2 btn body_button">Iniciar Sesión</button>
+                    <button [disabled]="loginForm.invalid" type="submit" class="my-2 btn bg-white">Iniciar Sesión</button>
                 </div>
                 <div class="text-center">
                     <span class="txt2">o inicia sesión con</span>
@@ -40,4 +40,3 @@
         </div>
     </div>
 </div>
-

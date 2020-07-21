@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 // Rutas
@@ -27,6 +27,11 @@ import { GestionprestamosComponent } from './components/gestionprestamos/gestion
 import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
 import { ShareComponent } from './components/share/share.component';
 import { GestionInListComponent } from './components/gestion-in-list/gestion-in-list.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { UserComponent } from './components/user/user.component';
+import { UserlabComponent } from './components/userlab/userlab.component';
+import { UserresourcesComponent } from './components/userresources/userresources.component';
+
 
 
 
@@ -50,14 +55,19 @@ import { GestionInListComponent } from './components/gestion-in-list/gestion-in-
     GestioninventarioComponent,
     GestionprestamosComponent,
     NotificacionesComponent,
-    GestionInListComponent
+    GestionInListComponent,
+    FilterPipe,
+    UserComponent,
+    UserlabComponent,
+    UserresourcesComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
     HttpClientModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     {

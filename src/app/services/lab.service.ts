@@ -8,10 +8,23 @@ import { Observable } from 'rxjs';
 })
 export class LabService {
 
+  item: Observable<any>
+
   constructor(private http: HttpClient) { }
 
   getLabs(): Observable<any>{
     const urlItems = `${environment.apiUrl}/stores`;
     return this.http.get<any>(urlItems);
   }
+
+  getLabId(id: string): Observable<any>{
+    const urlItems = `${environment.apiUrl}/stores/${id}`;
+    return this.http.get<any>(urlItems);
+  }
+
+  getStoreResource(id: string){
+    const urlApiI = `${environment.apiUrl}/store-items?store=${id}`;
+    return this.item = this.http.get(urlApiI);
+  }
 }
+

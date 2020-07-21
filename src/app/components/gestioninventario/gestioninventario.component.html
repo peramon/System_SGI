@@ -1,17 +1,58 @@
-<div class=" " *ngFor="let laboratorio of laboratorios">
-    <div class="header_nav">
-        <h2 class="mx-4 ">{{laboratorio.name}}</h2>
+<div class="fondo  " *ngIf="laboratorios">
+    <div class="color">
+        <h2 class="mx-4 ">{{laboratorios.name}}</h2>
     </div>
+    <div class="mx-4 ">
+        <div class="input-group mb-2">
+            <h3 class="my-2 color">
+                Recursos
+            </h3>
+
+            <input type="text" class="radius mx-4 my-2 form-control border-secondary  " name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">
+
+        </div>
+    </div>
+
     <div>
-        <a href="#" class="btn btn-info border-secondary text-white my-3 mx-4">Nuevo Recurso</a>
+        <button href="#" class="btn btn-success text-white my-3 mx-4" (click)="isOn = true">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
+            </svg> Nuevo Recurso</button>
+        <div class="container text-center " *ngIf="isOn">
+            <div class="bg-white radius">
+                <h5 class=" text-info">Nuevo Item</h5>
+                <div class="row ">
+                    <div class="col-5 mx-5 my-3">
+                        <p>Photo</p>
+
+                    </div>
+                    <div class="col-5  my-3">
+                        <input class="form-control" type="text" placeholder="Ingrese el nombre">
+
+                        <textarea class="my-3 form-control" name="" id="" cols="60" rows="10" placeholder="Ingrese la descripción"></textarea>
+                    </div>
+                </div>
+                <button class="my-2 btn btn-success">
+                    Agregar
+                 </button>
+                <button class="mx-5 btn btn-danger" (click)="isOn = false">
+                   Cancelar
+                </button>
+            </div>
+
+            <div>
+                <br>
+                <br>
+            </div>
+        </div>
     </div>
-    <div class="row ">
-        <div *ngFor="let recurso of recursos " class=" border-success col-3 card text-center " style="width: 25rem; " class="container ">
+    <div class="row " *ngIf="!isOn">
+        <div *ngFor="let recurso of recursos | filter:filterPost" class=" border-success col-3 card text-center " style="width: 25rem; " class="container ">
             <div class="my-4 card w-100 text-center ">
                 <div class="card-header bg-warning border-secondary "> </div>
                 <div class="card-body ">
                     <!--<img class="card-img-top " [src]="recurso.img " alt="Card image cap " width="65% " alt="45 ">-->
-                    <img src="assets/img/background_login6.png " width=" " height=" " alt=" " class="img-fluid ">
+                    <img src="assets/img/background_login6.png " width=" " height=" " alt="Recurso del laboratorio" class="img-fluid ">
                     <h5 class="card-title ">{{recurso.name}}</h5>
                     <p class="card-text text-center ">{{recurso.description}}</p>
                     <div class="card-footer bg-transparent ">

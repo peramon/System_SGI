@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ItemInterface } from '../models/item-interface';
+import { ItemIdInterface } from '../models/itemId-interface';
 
 
 
@@ -28,12 +29,13 @@ export class ItemsService {
 
   getItemId(id: string){
     const urlApiI = `${environment.apiUrl}/items/${id}`;
-    return this.item = this.http.get(urlApiI);
+    return this.item = this.http.get<ItemIdInterface[]>(urlApiI);
   }
 
-  saveItem(item: ItemInterface){
+  saveItem(item: ItemInterface): Observable<ItemInterface>{
     const urlApi = `${environment.apiUrl}/items`;
-    return this.http.post<ItemInterface>(urlApi, item, {headers: this.headers})
+    return this.http.post<ItemInterface>(urlApi, item)
     .pipe(map(data => data));
   }
+
 }

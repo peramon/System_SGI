@@ -22,3 +22,11 @@ form {
     border-color: #8C8C8C;
     border-width: 1px;
 }
+
+.fondo {
+    background-color: #035aa6;
+}
+
+.radius {
+    border-radius: 1em;
+}
