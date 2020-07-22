@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SigninService } from '../../services/signin.service';
+import { LogoutService } from '../../services/logout.service';
 import { Router } from '@angular/router';
 import  Swal  from 'sweetalert2';
 
@@ -10,7 +10,7 @@ import  Swal  from 'sweetalert2';
 })
 export class ShareComponent implements OnInit {
 
-  constructor(private signIn: SigninService, private router: Router) { }
+  constructor(private logO: LogoutService, private router: Router) { }
 
   user;
   role: string;
@@ -51,7 +51,7 @@ export class ShareComponent implements OnInit {
       
     }).then((result) => {
       if (result.value) {
-        this.signIn.logOut();
+        this.logO.logOut();
         this.router.navigate(['login']);
       }
     })

@@ -28,6 +28,8 @@ export class GestionInListComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   faPlusCircle = faPlusCircle;
 
+  isOn = false;
+
 
   constructor(private router: ActivatedRoute, private itemService: ItemsService) { }
 

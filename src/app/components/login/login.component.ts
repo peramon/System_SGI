@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         );
         localStorage.setItem('accessToken', data.jwt);
         localStorage.setItem('currentUser', JSON.stringify(data.user));
-        this.router.navigate(['share']);
+        this.router.navigate(['/share']);
       },
       error: error => {
         Swal.fire({
