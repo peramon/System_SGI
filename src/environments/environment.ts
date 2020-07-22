@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'https://mighty-oasis-26673.herokuapp.com'
-  apiUrl: 'http://localhost:1337'
+  apiUrl: 'https://mighty-oasis-26673.herokuapp.com'
+  // apiUrl: 'http://localhost:1337'
 };
 
 /*

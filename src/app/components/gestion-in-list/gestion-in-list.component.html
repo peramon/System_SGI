@@ -23,10 +23,15 @@
             <small><a class="nav-link text-white radius bg-success">Unidades disponibles: {{disponibles}}</a></small>
             <small><a class="nav-link  text-white radius mx-2 bg-warning">Unidades prestadas: {{prestados}}</a></small>
             <small><a class="nav-link text-white radius mx-2 bg-danger">Unidades en reparación: {{ enReparacion }}</a></small>
-            <button class="btn btn-success radius ml-auto "> <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo</span> </button>
+            <button class="btn btn-success radius ml-auto " (click)="isOn = true"> <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo</span> </button>
         </nav>
+        <div *ngIf="isOn">
+            <h5>Nuevo Item</h5>
+            <button class="btn btn-danger " (click)="isOn = false">Cancelar</button>
+        </div>
     </div>
-    <div class="my-4 mx-2 fondo  radius text-center col-12">
+    <div class="my-4 mx-2 fondo  radius text-center col-12" *ngIf="!isOn">
+        <br>
         <span class="h5"><strong>Items</strong></span>
         <table class="table table-striped">
             <thead>
@@ -64,5 +69,6 @@
                 </tr>
             </tbody>
         </table>
+        <br>
     </div>
 </div>

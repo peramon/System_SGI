@@ -10,20 +10,19 @@ import { AuthGuard } from './guards/auth.guard';
 
 const APP_ROUTES: Routes = [
     { path: 'routePath', component: Component },
-    { path: 'login', component: LoginComponent },
+    { path: 'login', component: LoginComponent, canActivate: [OnlogGuard] },
     { path: '',   redirectTo: '/login', pathMatch: 'full' },
     { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
     { path: '**', pathMatch: 'full', redirectTo: 'Pane' },
      {path: 'share', component: ShareComponent, canActivate: [AuthGuard]},
     {path: 'share/controlpanel', component: ControlpanelComponent, canActivate: [AuthGuard]},
-    {path: 'share/gestioninventario', component: GestioninventarioComponent, canActivate: [AuthGuard]},
-    {path: 'share/gestionprestamo', component: GestionprestamosComponent, canActivate: [AuthGuard]},
-    {path: 'share/notificaciones', component: NotificacionesComponent,canActivate: [AuthGuard]},
-    {path: 'share/userlab', component: UserlabComponent, canActivate: [AuthGuard]},
-    {path: 'share/userlab/store/:storeId', component: UserresourcesComponent, canActivate: [AuthGuard]},
-    {path: 'share/gestioninventario/itemList/:itemId', component: GestionInListComponent, canActivate: [AuthGuard]},
-    {path: '**', pathMatch: 'full', redirectTo: 'controlpanel' }
-   
+    {path: 'share/gestioninventario', component: GestioninventarioComponent, canActivate: [AuthGuard, RoleGuard]},
+    {path: 'share/gestionprestamo', component: GestionprestamosComponent, canActivate: [AuthGuard, RoleGuard]},
+    {path: 'share/notificaciones', component: NotificacionesComponent,canActivate: [AuthGuard, RoleGuard]},
+    {path: 'share/userlab', component: UserlabComponent, canActivate: [AuthGuard, UserGuard]},
+    {path: 'share/userlab/store/:storeId', component: UserresourcesComponent, canActivate: [AuthGuard, UserGuard]},
+    {path: 'share/gestioninventario/itemList/:itemId', component: GestionInListComponent, canActivate: [AuthGuard, RoleGuard]},
+    {path: '**', pathMatch: 'full', redirectTo: 'share' }
 ];
 
 
@@ -35,6 +34,9 @@ import { NotificacionesComponent } from './components/notificaciones/notificacio
 import { ShareComponent } from './components/share/share.component';
 import { GestionInListComponent } from './components/gestion-in-list/gestion-in-list.component';
 import { UserlabComponent } from './components/userlab/userlab.component';
+import { OnlogGuard } from './guards/onlog.guard';
+import { RoleGuard } from './guards/role.guard';
+import { UserGuard } from './guards/user.guard';
 
 
 
