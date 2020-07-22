@@ -32,8 +32,11 @@ import { UserComponent } from './components/user/user.component';
 import { UserlabComponent } from './components/userlab/userlab.component';
 import { UserresourcesComponent } from './components/userresources/userresources.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SolicitudComponent } from './modals/solicitud/solicitud.component';
 
-
+import { AutocompleteLibModule, AutocompleteLibComponent } from 'angular-ng-autocomplete';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 
 
@@ -60,7 +63,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FilterPipe,
     UserComponent,
     UserlabComponent,
-    UserresourcesComponent
+    UserresourcesComponent,
+    SolicitudComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule,
+    AutocompleteLibModule
   ],
   providers: [
     {
@@ -78,7 +85,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       multi: true
     },
   ],
-
+  entryComponents: [
+    SolicitudComponent
+  ]
+  ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

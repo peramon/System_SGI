@@ -10,6 +10,9 @@ import { LabService } from '../../services/lab.service';
 export class UserlabComponent implements OnInit {
 
   laboratorios: LabInterface[] = [];
+  componentName = 'Laboratorios';
+  redirectionRoute = 'share';
+  icon = 'icon_laboratories.png';
 
   constructor(private dataStore: LabService) { }
 

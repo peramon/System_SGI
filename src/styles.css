@@ -71,7 +71,6 @@
         width: 20%;
         margin-right: 0.5em;
     }
-    /*Login */
     
     .login_position {
         position: fixed;
@@ -162,4 +161,47 @@
     .row {
         width: 100%;
         height: auto;
+        overflow: auto;
+    }
+    
+    .component-title {
+        background-color: #004370;
+        color: #FCBF13;
+    }
+    
+    .div-centered {
+        display: table;
+        margin: 0 auto;
+        margin-top: 2em;
+        border: 1px solid rgb(221, 221, 221);
+    }
+    
+    .back-icon {
+        color: #FCBF13;
+    }
+    
+    .title_span {
+        margin: 1em;
+    }
+    
+    .title_icon {
+        /* margin: 1em; */
+        width: 2em;
+    }
+    
+    .component-table {
+        margin-top: 2em;
+    }
+    
+    a.nav-item {
+        margin: auto;
+    }
+    
+    .d-nav {
+        color: #FCBF13;
+        background-color: #004370;
+    }
+    
+    .u-background-color {
+        background-color: #E4E3E3;
     }
