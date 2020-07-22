@@ -22,6 +22,7 @@ const APP_ROUTES: Routes = [
     {path: 'share/userlab', component: UserlabComponent, canActivate: [AuthGuard]},
     {path: 'share/userlab/store/:storeId', component: UserresourcesComponent, canActivate: [AuthGuard]},
     {path: 'share/gestioninventario/itemList/:itemId', component: GestionInListComponent, canActivate: [AuthGuard]},
+    {path: 'share/solicitudes', component: SolicitudesComponent},
     {path: '**', pathMatch: 'full', redirectTo: 'controlpanel' }
    
 ];
@@ -35,6 +36,7 @@ import { NotificacionesComponent } from './components/notificaciones/notificacio
 import { ShareComponent } from './components/share/share.component';
 import { GestionInListComponent } from './components/gestion-in-list/gestion-in-list.component';
 import { UserlabComponent } from './components/userlab/userlab.component';
+import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 
 
 
