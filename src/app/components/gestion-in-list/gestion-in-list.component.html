@@ -1,14 +1,9 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="/share/gestioninventario">
-            <fa-icon [icon]="faArrowLeft"></fa-icon>
-        </a>
-        <a class="nav-item nav-link">{{recurso.name}}</a>
+<app-navbar [icon]="icon" [redirectionRoute]="redirectionRoute" [componentName]="recurso.name"></app-navbar>
+<div class="row u-background-color">
+    <div class="col-12">
+        <h2 class="color title_span">Detalle: {{recurso.name}}</h2>
     </div>
-</nav>
-<div class="container">
-    <h2 class=" color">Detalle: {{recurso.name}}</h2>
-    <div class="row my-2 mx-1 radius">
+    <div class="col row my-2 mx-1 radius">
         <div class="col-sm-4 my-3 text-center  fondo radius">
             <img src="assets/img/background_login6.png " width="50%" height=" " alt="Item del laboratorio" class="img-fluid ">
             <p class="color">Total de Unidades {{recurso.store_items.length}}</p>
@@ -18,7 +13,8 @@
             <p><strong>Descripción: </strong>{{recurso.description}}</p>
         </div>
     </div>
-    <div class="col">
+
+    <div class="col-12">
         <nav class="nav">
             <small><a class="nav-link text-white radius bg-success">Unidades disponibles: {{disponibles}}</a></small>
             <small><a class="nav-link  text-white radius mx-2 bg-warning">Unidades prestadas: {{prestados}}</a></small>
@@ -26,7 +22,7 @@
             <button class="btn btn-success radius ml-auto "> <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo</span> </button>
         </nav>
     </div>
-    <div class="my-4 mx-2 fondo  radius text-center col-12">
+    <div class="col-10 div-centered">
         <span class="h5"><strong>Items</strong></span>
         <table class="table table-striped">
             <thead>

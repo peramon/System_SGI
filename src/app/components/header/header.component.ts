@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-    currentUser = '';
+    currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    displayName = `${this.currentUser.name} ${this.currentUser.lastname}`;
     ngOnInit(): void {
-        // this.currentUser = 'Rick';
     }
 }

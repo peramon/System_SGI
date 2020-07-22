@@ -13,4 +13,8 @@ export class BorrowService {
   async create(toBeCreated: Borrow): Promise<void>{
     await this.http.post(this.url, toBeCreated).toPromise();
   }
+
+  async getBorrowRequestsByBorrowerId(borrowerId): Promise<any>{
+    return await this.http.get(`${this.url}?borrower=${borrowerId}`).toPromise();
+  }
 }

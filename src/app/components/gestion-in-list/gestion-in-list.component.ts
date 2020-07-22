@@ -14,6 +14,11 @@ import { faArrowLeft, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 })
 export class GestionInListComponent implements OnInit {
 
+   // navbar
+   componentName = 'Gestión Inventario';
+   redirectionRoute = 'share/gestioninventario';
+   icon = 'icon_manage_loan.png';
+
   recurso: ItemInterface;
   itemsN: number;
   disponibles = 0;

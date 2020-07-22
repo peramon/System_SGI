@@ -1,3 +1,35 @@
-<div class="animated fadeIn fast">
-    <h4 class="mx-2 my-1 color_blue">Solicitudes</h4>
+<app-navbar [icon]="icon" [redirectionRoute]="redirectionRoute" [componentName]="componentName"></app-navbar>
+
+<div *ngIf="requests" class="div-centered">
+    <table class="table w-auto">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Item</th>
+                <th>Fecha de solicitud</th>
+                <th>Fecha de devolución</th>
+                <th>Estado</th>
+                <th>...</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of requests;let i = index">
+                <td scope="row">{{i + 1}}</td>
+                <td>{{ request.store_item.item.name }}</td>
+                <td>{{ request.created_at | date: 'dd/MM/yyyy'}}</td>
+                <td>{{ request.date_limit | date: 'dd/MM/yyyy'}}</td>
+                <td>{{ request.status.name }}</td>
+                <td>
+                    <div class="btn-group" data-toggle="buttons">
+                        <button class="btn btn-outline-danger">
+                                    Cancelar
+                                </button>
+                        <button class="btn btn-primary">
+                                    Editar
+                                </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

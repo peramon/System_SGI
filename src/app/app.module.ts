@@ -36,6 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SolicitudComponent } from './modals/solicitud/solicitud.component';
 
 import { AutocompleteLibModule, AutocompleteLibComponent } from 'angular-ng-autocomplete';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 
 
@@ -64,6 +65,7 @@ import { AutocompleteLibModule, AutocompleteLibComponent } from 'angular-ng-auto
     UserlabComponent,
     UserresourcesComponent,
     SolicitudComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

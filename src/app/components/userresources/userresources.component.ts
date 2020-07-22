@@ -19,7 +19,9 @@ export class UserresourcesComponent implements OnInit {
   laboratorio: string;
   filterPost = '';
 
-
+  componentName = 'Buscar Recurso';
+  redirectionRoute = 'share';
+  icon = 'icon_manage.png';
   faPenSquare = faPenSquare;
 
   constructor(private modal: NgbModal, private router: ActivatedRoute, private storeItem: LabService, private storeItemService: StoreItemService) {

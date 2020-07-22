@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import  Swal  from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
 
-  constructor(private builder: FormBuilder, private authService: AuthService, private router: Router) { } 
- 
+  constructor(private builder: FormBuilder, private authService: AuthService, private router: Router) { }
+
 
   ngOnInit(): void {
     this.loginForm = this.builder.group({
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           text: 'Contraseña o correo incorrectos'
         })
         console.error('There was an error!', error);
-        }
+      }
     });
   }
 

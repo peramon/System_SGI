@@ -1,12 +1,6 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="/share">
-            <fa-icon [icon]="faArrowLeft"></fa-icon>
-        </a>
-        <a class="nav-item nav-link">{{laboratorios.name}}</a>
-    </div>
-</nav>
-<div *ngIf="laboratorios">
+<app-navbar [icon]="icon" [redirectionRoute]="redirectionRoute" [componentName]="componentName"></app-navbar>
+
+<div *ngIf="laboratorios" class="u-background-color">
     <div class="row">
         <div class="col-6 title">
             <span class="h1 color">Recursos del Laboratorio</span>

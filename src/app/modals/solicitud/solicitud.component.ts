@@ -1,11 +1,13 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators, NgModel } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { Subscription, pipe } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import Borrow from '../../models/borrow/borrow.interface';
 import { BorrowService } from '../../services/borrow.service';
+
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -66,7 +68,7 @@ export class SolicitudComponent implements OnInit, OnDestroy {
     };
     await this.borrowService.create(borrow);
     // TODO Mejorar alerta por algo mas guapo
-    alert('Prestamo creado...');
+    Swal.fire('Solicitud creada correctamente!', 'Se notificará a tu correo electrónico cuando esta sea atendida', 'success')
     this.activeModal.close();
   }
   ngOnDestroy() {

@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notificaciones.component.css']
 })
 export class NotificacionesComponent implements OnInit {
+  componentName = 'Notificaciones';
+  redirectionRoute = 'share';
+  icon = 'icon_notification.png';
 
   constructor() { }
 
