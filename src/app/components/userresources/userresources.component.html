@@ -1,56 +1,38 @@
-<div class="">
-    <div class="container">
-        <div class="">
-            <div class="input-group mb-2">
-                <h3 class="my-4 color">
-                    Buscar
-                </h3>
-                <input type="text" class="mx-4 my-4 search form-control  " name="filterPost" placeholder="Buscar por nombre">
-                <!--<input type="text" class="mx-4 my-2 search form-control bg-secondary " name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">-->
-
-            </div>
-        </div>
-        <div class=" my-4">
-            <h5 class="color"><strong>Recursos</strong></h5>
-            <h5 class="color"><strong>{{laboratorio}}</strong></h5>
-        </div>
-
-        <div class="conatainer mx-5">
-            <div class="my-4 mx-2 fondo  radius text-center col-12">
-                <br>
-                <h5 class=" radius bg-warning  "><strong> ITEMS</strong></h5>
-                <table class="table">
-                    <thead>
-                        <tr class="tablecolor text-white">
-                            <th scope="col">Código</th>
-                            <th scope="col">Nombre del recurso</th>
-                            <th scope="col">Disponible</th>
-                            <th>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody *ngFor="let item of recursos">
-                        <tr>
-                            <td class="bg-light">{{item.id}}</td>
-                            <td class="bg-light">{{item.name}}</td>
-                            <td class="bg-light">Si</td>
-                            <td class="bg-light">
-                                <button class="mx-2 btn btn-success ">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                  </svg>
-                                Solicitar</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br>
-            </div>
-        </div>
-
+<div class="row">
+    <div class="col-6 title">
+        <span class="h1 color">Recursos de {{laboratorio}}</span>
     </div>
+    <div class="search-bar col-8">
+        <input type="text" class="form-control" name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">
+    </div>
+</div>
 
-
-
+<div class="mx-5">
+    <div class="my-4 mx-2 fondo  radius text-center col-12">
+        <h5 class=" radius bg-warning  "><strong> ITEMS</strong></h5>
+        <table class="table">
+            <thead>
+                <tr class="tablecolor text-white">
+                    <th scope="col">Código</th>
+                    <th scope="col">Nombre del recurso</th>
+                    <th scope="col">Disponible</th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of recursos | filter:filterPost">
+                <tr>
+                    <td class="bg-light">{{item.id}}</td>
+                    <td class="bg-light">{{item.name}}</td>
+                    <td class="bg-light">Si</td>
+                    <td class="bg-light">
+                        <button class="mx-2 btn btn-success " (click)="openModal(item)">
+                                <fa-icon [icon]="faPenSquare"></fa-icon>
+                                <span> Solicitar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
