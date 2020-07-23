@@ -14,7 +14,11 @@ export class BorrowService {
     await this.http.post(this.url, toBeCreated).toPromise();
   }
 
-  async getBorrowRequestsByBorrowerId(borrowerId): Promise<any>{
+  async getBorrowRequestsByBorrowerId(borrowerId: any): Promise<any>{
     return await this.http.get(`${this.url}?borrower=${borrowerId}`).toPromise();
+  }
+
+  async getBorrowRequestsByLabId(labId: any): Promise<any>{
+    return await this.http.get(`${this.url}?store_item.store=${labId}`).toPromise();
   }
 }
