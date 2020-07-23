@@ -3,7 +3,7 @@
 <div *ngIf="laboratorios" class="u-background-color">
     <div class="row">
         <div class="col-6 title">
-            <span class="h1 color">Recursos del Laboratorio</span>
+            <span class="h1 color">{{laboratorios.name}}</span>
         </div>
         <div class="search-bar col-8">
             <input type="text" class="form-control" name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">
@@ -36,7 +36,6 @@
         </div>
     </div>
     <div class="row " *ngIf="!isOn">
-        <h2>{{recursos.length}}</h2>
         <div *ngFor="let recurso of recursos | filter:filterPost" class=" border-success col-3 card text-center " style="width: 25rem; " class="container ">
             <div class="my-4 card w-100 text-center ">
                 <div class="card-header bg-warning border-secondary "> </div>
@@ -44,6 +43,8 @@
                     <!-- <img class="card-img-top " [src]="recurso.img " alt="Recurso del laboratorio" width="65% " alt="45"> -->
                     <img src="assets/img/background_login6.png " width=" " height=" " alt="Recurso del laboratorio" class="img-fluid ">
                     <h5 class="card-title ">{{recurso.name}}</h5>
+                    <!-- TODO Arreglar el numero de items -->
+                    <h5 class="card-subtitle ">{{recurso.store_items.lenght}}</h5>
                     <p class="card-text text-center ">{{recurso.description}}</p>
                     <div class="card-footer bg-transparent ">
                         <a href="# " class="btn btn-light border-secondary text-info " [routerLink]="[ 'itemList',recurso.id] ">Ver Detalles</a>

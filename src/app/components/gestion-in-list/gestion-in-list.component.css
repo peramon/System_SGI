@@ -9,3 +9,7 @@
 .color {
     color: #014170;
 }
+
+.radius {
+    border-radius: 1em;
+}
