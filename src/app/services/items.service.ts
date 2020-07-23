@@ -32,10 +32,19 @@ export class ItemsService {
     return this.item = this.http.get<ItemIdInterface[]>(urlApiI);
   }
 
-  saveItem(item: ItemInterface): Observable<ItemInterface> {
-    const urlApi = `${environment.apiUrl}/items`;
-    return this.http.post<ItemInterface>(urlApi, item)
-      .pipe(map(data => data));
+  async saveItem(item): Promise<void> {
+    const urlApi = `${environment.apiUrl}/store-items`;
+    await this.http.post(urlApi, item).toPromise();
+  }
+
+  async updateItem(id, item): Promise<void> {
+    const urlApii = `${environment.apiUrl}/store-items/${id}`;
+    await this.http.put(urlApii, item).toPromise();
+  }
+
+  deleteItem(id: string): Observable<{}>{
+    const urlApi2 = `${environment.apiUrl}/store-items/${id}`;
+    return this.http.delete(urlApi2);
   }
 
 }
