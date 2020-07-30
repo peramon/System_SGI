@@ -21,4 +21,18 @@ export class BorrowService {
   async getBorrowRequestsByLabId(labId: any): Promise<any>{
     return await this.http.get(`${this.url}?store_item.store=${labId}`).toPromise();
   }
+
+ async updateStatusBorrow(borrowId: any, status: any): Promise<any>{
+    return await this.http.put(`${this.url}/${borrowId}`, status).toPromise();
+  }
+
+  async getBorrowId(borrowId: any): Promise<any>{
+    return await this.http.get(`${this.url}/${borrowId}`).toPromise();
+  }
+
+  async deleteBorrow(borrowId: any): Promise<any>{
+    return await this.http.delete(`${this.url}/${borrowId}`).toPromise();
+    
+  }
+ 
 }

@@ -1,6 +1,6 @@
 <app-navbar [icon]="icon" [redirectionRoute]="redirectionRoute" [componentName]="componentName"></app-navbar>
 
-<div *ngIf="requests" class="div-centered">
+<div *ngIf="requests && !isMod" class="div-centered">
     <table class="table w-auto">
         <thead class="thead-light">
             <tr>
@@ -19,12 +19,13 @@
                 <td>{{ request.created_at | date: 'dd/MM/yyyy'}}</td>
                 <td>{{ request.date_limit | date: 'dd/MM/yyyy'}}</td>
                 <td>{{ request.status.name }}</td>
+                <!-- request.id-->
                 <td>
                     <div class="btn-group" data-toggle="buttons">
-                        <button class="btn btn-outline-danger">
+                        <button class="btn btn-danger" (click)="borrowId = request.id; cancelBorrow()">
                                     Cancelar
                                 </button>
-                        <button class="btn btn-primary">
+                        <button *ngIf="request.status.name ==='En revisión'" class="btn btn-primary" (click)="borrowId = request.id; isMod =true">
                                     Editar
                                 </button>
                     </div>
@@ -32,4 +33,31 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+
+<div *ngIf="isMod">
+    <br>
+    <div class="container bg-white radius w-50 ">
+        <div class=" radius text-center fondo">
+            <br>
+            <h4 class=" text-info ">Modificar Solicitud</h4>
+            <div class=" my-4 text-center">
+                <h5>Fecha de devolución</h5>
+                <input name="" type="datetime-local" [(ngModel)]="borrow.date_limit">
+            </div>
+            <div>
+                <h5>Razón del préstamo</h5>
+                <textarea [placeholder]="requests.comment" class="" cols="30" rows="3" [(ngModel)]="borrow.comment"></textarea>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success " id="acept" (click)=" updateBorrow()">Aceptar</button>
+                <button class="btn btn-danger mx-4" (click)="isMod = false">Cancelar</button>
+            </div>
+            <br>
+        </div>
+
+    </div>
+    <br>
+    <br>
 </div>

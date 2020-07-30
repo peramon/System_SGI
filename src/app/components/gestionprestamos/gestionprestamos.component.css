@@ -1,3 +1,11 @@
 .btn {
     margin: 0.5em;
 }
+
+.radius {
+    border-radius: 1em;
+}
+
+.fondo {
+    background-color: #e4e3e3;
+}
