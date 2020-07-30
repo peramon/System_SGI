@@ -1,14 +1,56 @@
 <!-- Admin dashboard-->
-<div class="container body_heigth text-center">
-    <div class="row ">
-        <div class="my-2 mx-5 col-3 alert body_bg text-center">
-            <a class="header_leter " [routerLink]="['gestioninventario']"><img class="body_icon" src="./assets/icon's/icon_manage.png" alt="">Gestión Inventario</a>
+<div class="container body_heigth">
+    <div class="row">
+        <div class="col-12 row">
+            <a class="my-2 mx-5 col-3 alert body_bg text-center header_leter " [routerLink]="['gestioninventario']"><img class="body_icon" src="./assets/icon's/icon_manage.png" alt="">Gestión Inventario</a>
+            <a class="my-2 mx-4 col-3 alert body_bg text-center header_leter" [routerLink]="['solicitudes']"><img class="body_icon" src="./assets/icon's/icon_manage_loan.png" alt="">Gestión Préstamos</a>
+            <a class="my-2 mx-5 col-3 alert body_bg text-center header_leter" [routerLink]="['notificaciones']"><img class="body_icon" src="./assets/icon's/icon_notification.png" alt="">Notificaciones</a>
         </div>
-        <div class="my-2 mx-4 col-3 alert body_bg text-center">
-            <a class="header_leter" [routerLink]="['solicitudes']"><img class="body_icon" src="./assets/icon's/icon_manage_loan.png" alt="">Gestión Préstamos</a>
-        </div>
-        <div class="my-2 mx-5 col-3 alert body_bg text-center">
-            <a class="header_leter" [routerLink]="['notificaciones']"><img class="body_icon" src="./assets/icon's/icon_notification.png" alt="">Notificaciones</a>
+
+        <div *ngIf="stats" class="col-12 row">
+            <div class="col-12">
+                <span class="h2">Estadísticas de los recursos</span>
+
+            </div>
+            <div class="stat-container col">
+                <span class="h5">Total</span>
+                <span>{{stats.total}} unidades</span>
+                <fa-icon [icon]="stat1" size="lg" class="stat-icon"></fa-icon>
+            </div>
+            <div class="stat-container col">
+                <span class="h5">Disponibles</span>
+                <span>{{stats.disponibles}} unidades</span>
+                <fa-icon [icon]="stat2" size="lg" class="stat-icon"></fa-icon>
+            </div>
+            <div class="stat-container col">
+                <span class="h5">En Préstamo</span>
+                <span>{{stats.prestados}} unidades</span>
+                <fa-icon [icon]="stat3" size="lg" class="stat-icon"></fa-icon>
+            </div>
+            <div class="stat-container col">
+                <span class="h5">En reparación</span>
+                <span>{{stats.enreparacion}} unidades</span>
+                <span *ngIf="stats.enreparacion > 1">10</span>
+                <fa-icon [icon]="stat4" size="lg" class="stat-icon"></fa-icon>
+            </div>
         </div>
     </div>
+
+
+    <div id="canvasContainer" class="col-12 row">
+        <div class="col-5 chart-box">
+            <span class="h5">Item más solicitado</span>
+            <canvas class="dashboard-chart" id="chart1">
+            </canvas>
+        </div>
+        <div class="col-5 chart-box">
+            <span class="h5">Item más prestado</span>
+            <canvas class="dashboard-chart" id="chart2">
+            </canvas>
+        </div>
+
+
+    </div>
+
+
 </div>

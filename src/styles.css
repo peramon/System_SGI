@@ -34,9 +34,16 @@
     }
     
     .header_leter {
-        color: #FCC000;
+        color: #F1F1F5;
         padding-top: 0.5em;
         padding-left: 0.5em;
+    }
+    
+    .header_leter:hover {
+        color: #cfcfcf;
+        padding-top: 0.5em;
+        padding-left: 0.5em;
+        text-decoration: none;
     }
     /*styles of body component */
     
@@ -166,7 +173,7 @@
     
     .component-title {
         background-color: #004370;
-        color: #FCBF13;
+        color: #F1F1F5;
     }
     
     .div-centered {
@@ -177,7 +184,7 @@
     }
     
     .back-icon {
-        color: #FCBF13;
+        color: #F1F1F5;
     }
     
     .title_span {
@@ -198,12 +205,13 @@
     }
     
     .d-nav {
-        color: #FCBF13;
         background-color: #004370;
+        color: #F1F1F5;
     }
     
     .u-background-color {
-        background-color: #E4E3E3;
+        /* background-color: #E4E3E3; */
+        background-color: #F1F1F5;
     }
     
     .color-dark-blue {

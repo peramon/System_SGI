@@ -42,6 +42,21 @@ export class ItemsService {
     await this.http.put(urlApii, item).toPromise();
   }
 
+  async getStats(storeId: string): Promise<any>{
+    const urlApi = `${environment.apiUrl}/stats/${storeId}`;
+    return this.http.get(urlApi).toPromise();
+  }
+
+  async getRequestedCount(storeId: string): Promise<any>{
+    const urlApi = `${environment.apiUrl}/request-count/${storeId}`;
+    return this.http.get(urlApi).toPromise();
+  }
+
+  async getBorrowedCount(storeId: string): Promise<any>{
+    const urlApi = `${environment.apiUrl}/borrowed-count/${storeId}`;
+    return this.http.get(urlApi).toPromise();
+  }
+
   deleteItem(id: string): Observable<{}>{
     const urlApi2 = `${environment.apiUrl}/store-items/${id}`;
     return this.http.delete(urlApi2);
