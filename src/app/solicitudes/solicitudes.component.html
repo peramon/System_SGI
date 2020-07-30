@@ -14,11 +14,13 @@
                 <p class="card-text"><strong>Tutor: </strong>{{ request.tutor.name }} {{ request.tutor.lastname}}</p>
                 <p class="card-text"><strong>Fecha limite: </strong>{{ request.date_limit | date: 'dd/MM/yyyy' }}</p>
                 <p class="card-text"><strong>Motivo: </strong>{{request.comment}}</p>
+                <p class="card-text"><strong>Status: </strong>{{request.status.name}}</p>
             </div>
 
             <div class="card-footer">
-                <button type="button" class="btn btn-success">Aprobar</button>
-                <button type="button" class="btn btn-outline-danger">Rechazar</button>
+                <!--TODO controlar los botonos al momento de actualizar el estado del prestamo-->
+                <button type="button" class="btn btn-success" (click)="idBorrow = request.id; statusBorrow.status = 2 ;updateBorrow()">Aprobar</button>
+                <button type="button" class="btn btn-outline-danger" (click)="idBorrow = request.id; statusBorrow.status = 3 ;updateBorrow()">Rechazar</button>
             </div>
         </div>
     </div>
