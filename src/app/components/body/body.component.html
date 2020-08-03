@@ -1,15 +1,18 @@
 <!-- Admin dashboard-->
-<div class="container body_heigth">
-    <div class="row">
-        <div class="col-12 row">
-            <a class="my-2 mx-5 col-3 alert body_bg text-center header_leter " [routerLink]="['gestioninventario']"><img class="body_icon" src="./assets/icon's/icon_manage.png" alt="">Gestión Inventario</a>
-            <a class="my-2 mx-4 col-3 alert body_bg text-center header_leter" [routerLink]="['solicitudes']"><img class="body_icon" src="./assets/icon's/icon_manage_loan.png" alt="">Gestión Préstamos</a>
-            <a class="my-2 mx-5 col-3 alert body_bg text-center header_leter" [routerLink]="['notificaciones']"><img class="body_icon" src="./assets/icon's/icon_notification.png" alt="">Notificaciones</a>
-        </div>
+<div class="col-8 row ">
+    <a class="my-3 mx-3 col-3 alert body_bg text-center header_leter " [routerLink]="['gestioninventario']"><img class="body_icon" src="./assets/icon's/icon_manage.png" alt="">Gestión Inventario</a>
+    <a class="my-3 mx-4 col-3 alert body_bg text-center header_leter" [routerLink]="['solicitudes']"><img class="body_icon" src="./assets/icon's/icon_manage_loan.png" alt="">Gestión Préstamos</a>
+    <!--
+    <a class="my-2 mx-5 col-3 alert body_bg text-center header_leter" [routerLink]="['notificaciones']"><img class="body_icon" src="./assets/icon's/icon_notification.png" alt="">Notificaciones</a>
+    -->
+</div>
+<div class="container body_heigth ">
+    <div class=" row">
+
 
         <div *ngIf="stats" class="col-12 row">
             <div class="col-12">
-                <span class="h2">Estadísticas de los recursos</span>
+                <h2 class="color_blue ">Estadísticas de los recursos</h2>
 
             </div>
             <div class="stat-container col">

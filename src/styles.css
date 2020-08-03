@@ -13,7 +13,6 @@
     }
     
     .line {
-        height: 1%;
         background-color: #FCC000;
     }
     
@@ -216,4 +215,14 @@
     
     .color-dark-blue {
         color: #014170;
+    }
+    /*Height of br*/
+    
+    .brt {
+        line-height: 50%;
+    }
+    /*Pagination Style*/
+    
+    .custom-pagination /deep/ .ngx-pagination .current {
+        background: #014170;
     }

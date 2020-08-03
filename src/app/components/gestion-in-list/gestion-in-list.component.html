@@ -4,7 +4,7 @@
         <h2 class="color title_span">Detalle: {{recurso.name}}</h2>
     </div>
     <div class="col row my-2 mx-1 radius">
-        <div class="col-sm-4 my-3 text-center  fondo radius">
+        <div class="col-sm-4 my-3 text-center  radius">
             <img src="assets/img/background_login6.png " width="50%" height=" " alt="Item del laboratorio" class="img-fluid ">
             <p class="color">Total de Unidades {{recurso.store_items.length}}</p>
         </div>
@@ -19,7 +19,7 @@
             <small><a class="nav-link text-white radius bg-success mx-5">Unidades disponibles: {{disponibles}}</a></small>
             <small><a class="nav-link  text-white radius mx-2 bg-info">Unidades prestadas: {{prestados}}</a></small>
             <small><a class="nav-link text-white radius mx-5 bg-danger">Unidades en reparación: {{ enReparacion }}</a></small>
-            <button class="btn btn-success radius mx-auto " (click)="isOn = true"> <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo</span> </button>
+            <button *ngIf="!isMod" class=" btn btn-success radius mx-auto " (click)="isOn = true"> <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo</span> </button>
         </nav>
         <div *ngIf="isOn">
             <br>
@@ -35,7 +35,7 @@
                         <div class="col-5  my-3">
                             <input class="form-control fondo" type="text" [placeholder]="lab.name" readonly>
                             <div ngbDropdown class="btn-group my-3" role="group" placement="bottom">
-                                <p class="my-2 ">Estado</p>
+                                <p class="my-2 ">Estado<span class="text-danger">*</span></p>
                                 <button class="btn btn-outline-secondary mx-3" ngbDropdownToggle id="midrop1">{{select}}</button>
                                 <div ngbDropdownMenu aria-labelledby="midrop1">
                                     <button ngbDropdownItem (click)="select='Disponible'; item.status = '1'">1. Disponible</button>
@@ -50,7 +50,7 @@
 
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-success " id="acept" (click)="isOn = false; saveItems(select, item.status)">Aceptar</button>
+                        <button class="btn btn-success " id="acept" (click)=" saveItems(select, item.status)">Aceptar</button>
                         <button class="btn btn-danger mx-4" (click)="isOn = false">Cancelar</button>
                     </div>
                     <br>
@@ -91,7 +91,7 @@
 
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-success " id="acept" (click)="isMod = false; updateItem(idItem, item.status)">Aceptar</button>
+                        <button class="btn btn-success " id="acept" (click)=" updateItem(idItem, item.status)">Aceptar</button>
                         <button class="btn btn-danger mx-4" (click)="isMod = false">Cancelar</button>
                     </div>
                     <br>
@@ -103,11 +103,15 @@
         </div>
     </div>
 
-    <div class="my-4 mx-2 fondo  radius text-center col-12" *ngIf="!isOn && !isMod">
-
-        <div class="col-10 div-centered">
-
+    <div class=" mx-2   text-center col-12" *ngIf="!isOn && !isMod">
+        <div class="col-10 fondo radius div-centered">
+            <div class="brt">
+                <br>
+            </div>
             <span class="h5"><strong>Items</strong></span>
+            <div class="brt">
+                <br>
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr class="bg-dark text-white">
@@ -119,7 +123,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let item of recurso.store_items;let i = index">
+                <tbody *ngFor="let item of recurso.store_items |  paginate: { itemsPerPage: 5, currentPage: pageActual };let i = index ">
                     <tr>
                         <td class="bg-light">{{i + 1}}</td>
                         <td class="bg-light">{{item.id}}</td>
@@ -128,7 +132,7 @@
                         <td class="bg-light" *ngIf="item.status == 2">Prestado</td>
                         <td class="bg-light" *ngIf="item.status == 3">En reparación</td>
                         <td class="bg-light">
-                            <button class="mx-2 btn-info radius" (click)="isMod=true;idItem = item.id;select=item.status">
+                            <button class="mx-2 btn-info radius" (click)="isMod=true;idItem = item.id;select=item.status;getStatus(item.status)">
                                 <svg width=" 1em " height="1em " viewBox="0 0 16 16 " class="bi bi-pencil-square " fill="currentColor " xmlns="http://www.w3.org/2000/svg ">
                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z "/>
                                     <path fill-rule="evenodd " d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z "/>
@@ -147,4 +151,11 @@
             </table>
             <br>
         </div>
+        <br>
+        <pagination-controls class=" custom-pagination text-primary" (pageChange)="pageActual = $event"></pagination-controls>
+        <br>
     </div>
+    <div class="brt">
+        <br>
+    </div>
+</div>

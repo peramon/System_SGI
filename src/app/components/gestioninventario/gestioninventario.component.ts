@@ -34,6 +34,8 @@ export class GestioninventarioComponent implements OnInit {
 
   uploadForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private router: Router, private dataItems: ItemsService, private dataStore: LabService) { }
+  // Pagination
+  pageActual = 1;
   filterPost = '';
   //private items: ItemInterface;
   ngOnInit(): void {

@@ -1,40 +1,45 @@
 <app-navbar [icon]="icon" [redirectionRoute]="redirectionRoute" [componentName]="componentName"></app-navbar>
 
-<div class="row">
-    <div class="col-6 title">
+<div class="row container">
+    <div class="col-8title mx-5">
         <span class="h1 color">Recursos de {{laboratorio}}</span>
     </div>
-    <div class="search-bar col-8">
-        <input type="text" class="form-control" name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">
+    <div class="radius col-8 mx-5 my-3">
+        <input type=" text " class="radius form-control " name="filterPost " placeholder="Buscar por nombre " [(ngModel)]="filterPost ">
     </div>
 </div>
 
-<div class="mx-5">
-    <div class="my-4 mx-2 fondo  radius text-center col-12">
-        <h5 class=" radius bg-warning  "><strong> ITEMS</strong></h5>
-        <table class="table">
+<div class="mx-5 ">
+    <div class="my-2 mx-2 fondo radius text-center col-12 ">
+        <br class="brt">
+        <h5 class="radius text-black "><strong> ITEMS</strong></h5>
+        <table class="table ">
             <thead>
-                <tr class="tablecolor text-white">
-                    <th scope="col">Código</th>
-                    <th scope="col">Nombre del recurso</th>
-                    <th scope="col">Disponible</th>
+                <tr class="tablecolor text-white ">
+                    <th scope="col ">Código</th>
+                    <th scope="col ">Nombre del recurso</th>
+                    <th scope="col ">Disponible</th>
                     <th>
                     </th>
                 </tr>
             </thead>
-            <tbody *ngFor="let item of recursos | filter:filterPost">
+            <tbody *ngFor="let item of recursos | filter:filterPost |  paginate: { itemsPerPage: 6, currentPage: pageActual }">
                 <tr>
-                    <td class="bg-light">{{item.id}}</td>
-                    <td class="bg-light">{{item.name}}</td>
-                    <td class="bg-light">Si</td>
-                    <td class="bg-light">
-                        <button class="mx-2 btn btn-success " (click)="openModal(item)">
-                                <fa-icon [icon]="faPenSquare"></fa-icon>
+                    <td class="bg-light ">{{item.id}}</td>
+                    <td class="bg-light ">{{item.name}}</td>
+                    <td class="bg-light ">Si</td>
+                    <td class="bg-light ">
+                        <button class="mx-2 btn btn-success " (click)="openModal(item) ">
+                                <fa-icon [icon]="faPenSquare "></fa-icon>
                                 <span> Solicitar</span>
                         </button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <div class=" text-center">
+            <pagination-controls class=" custom-pagination text-primary" (pageChange)="pageActual = $event"></pagination-controls>
+        </div>
+        <br class="brt">
     </div>
 </div>

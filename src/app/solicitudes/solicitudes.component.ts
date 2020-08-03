@@ -21,6 +21,9 @@ export class SolicitudesComponent implements OnInit {
   lab = JSON.parse(localStorage.getItem('lab'));
   constructor(private borrowService: BorrowService) { }
 
+    // Paginacion
+    pageActual = 1;
+
   ngOnInit(): void {
     this.getPending();
   }

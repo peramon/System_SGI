@@ -38,7 +38,8 @@ import { SolicitudComponent } from './modals/solicitud/solicitud.component';
 import { AutocompleteLibModule, AutocompleteLibComponent } from 'angular-ng-autocomplete';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -78,7 +79,9 @@ import { SolicitudesComponent } from './solicitudes/solicitudes.component';
     FormsModule,
     FontAwesomeModule,
     NgbModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    NgxSpinnerModule,
+    NgxPaginationModule
   ],
   providers: [
     {

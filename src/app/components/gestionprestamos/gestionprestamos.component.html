@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let request of requests;let i = index">
+            <tr *ngFor="let request of requests|  paginate: { itemsPerPage: 6, currentPage: pageActual };let i = index">
                 <td scope="row"><strong>{{i + 1}}</strong></td>
                 <td>{{ request.store_item.item.name }}</td>
                 <td>{{ request.created_at | date: 'dd/MM/yyyy'}}</td>
@@ -30,13 +30,18 @@
                         <button *ngIf="request.status.name ==='En revisión'" class="btn btn-primary" (click)="borrowId = request.id; isMod =true">
                                     Editar
                                 </button>
+                        <button *ngIf="request.status.name !=='En revisión'" class="btn btn-primary" (click)="borrowId = request.id; isMod =true" disabled>
+                                    Editar
+                                </button>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div class=" text-center">
+        <pagination-controls class=" custom-pagination text-primary" (pageChange)="pageActual = $event"></pagination-controls>
+    </div>
 </div>
-
 
 <div *ngIf="isMod">
     <br>
@@ -45,12 +50,12 @@
             <br>
             <h4 class=" text-primary "><strong>Modificar Solicitud</strong></h4>
             <div class=" my-4 text-center">
-                <h5>Fecha de devolución</h5>
+                <h5>Fecha de devolución<span class="text-danger">*</span></h5>
                 <input class="form-control w-50 mx-auto" name="" type="datetime-local" [(ngModel)]="borrow.date_limit">
             </div>
             <div>
-                <h5>Razón del préstamo</h5>
-                <textarea [placeholder]="requests.comment" class="form-control w-50 mx-auto radius" cols="10" rows="5" [(ngModel)]="borrow.comment"></textarea>
+                <h5>Razón del préstamo<span class="text-danger">*</span></h5>
+                <textarea placeholder="Ingrese el nuevo comentario" class="form-control w-50 mx-auto radius" cols="10" rows="5" [(ngModel)]="borrow.comment"></textarea>
             </div>
             <br>
             <div class="text-center my-2">

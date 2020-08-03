@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LogoutService } from '../../services/logout.service';
 import { Router } from '@angular/router';
-import  Swal  from 'sweetalert2';
+
 
 @Component({
   selector: 'app-share',
@@ -10,7 +10,7 @@ import  Swal  from 'sweetalert2';
 })
 export class ShareComponent implements OnInit {
 
-  constructor(private logO: LogoutService, private router: Router) { }
+  constructor() { }
 
   user;
   role: string;
@@ -35,25 +35,5 @@ export class ShareComponent implements OnInit {
     }
   }
 
-  logOut(){ 
   
-    
-    Swal.fire({
-      title: 'CERRAR SESIÓN',
-      background: '#ffff',
-      text: '¿Seguro que desea salir?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '	#5cb85c',
-      cancelButtonColor: '#d9534f',
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Aceptar',
-      
-    }).then((result) => {
-      if (result.value) {
-        this.logO.logOut();
-        this.router.navigate(['login']);
-      }
-    })
-  }
 }

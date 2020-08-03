@@ -24,6 +24,9 @@ export class UserresourcesComponent implements OnInit {
   icon = 'icon_manage.png';
   faPenSquare = faPenSquare;
 
+  // Pagination
+  pageActual = 1;
+
   constructor(private modal: NgbModal, private router: ActivatedRoute, private storeItem: LabService, private storeItemService: StoreItemService) {
   }
 

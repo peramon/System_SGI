@@ -18,6 +18,7 @@ export class GestionprestamosComponent implements OnInit {
   requests: any;
   faArrowLeft = faArrowLeft;
 
+  
   borrowId;
   borrowO;
   isMod = false;
@@ -25,6 +26,9 @@ export class GestionprestamosComponent implements OnInit {
     date_limit : '',
     comment : ''
 };
+
+// Pagination
+pageActual = 1;
 
   constructor(private borrowService: BorrowService) { }
 
