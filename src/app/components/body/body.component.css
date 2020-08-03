@@ -36,3 +36,13 @@ span {
 .chart-box:hover {
     box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
+
+.body_icon {
+    width: 15%;
+}
+
+.op {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}

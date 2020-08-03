@@ -28,6 +28,9 @@ export class GestioninventarioComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   faPlusCircle = faPlusCircle;
 
+  // Pagination
+  pageActual = 1;
+
   constructor(private router: Router, private dataItems: ItemsService, private dataStore: LabService) { }
   filterPost = '';
   //private items: ItemInterface;

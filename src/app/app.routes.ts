@@ -20,7 +20,7 @@ const APP_ROUTES: Routes = [
     { path: 'share/gestionprestamo', component: GestionprestamosComponent, canActivate: [AuthGuard, UserGuard] },
     { path: 'share/notificaciones', component: NotificacionesComponent, canActivate: [AuthGuard] },
     { path: 'share/userlab', component: UserlabComponent, canActivate: [AuthGuard, UserGuard] },
-    { path: 'share/userlab/store/:storeId', component: UserresourcesComponent, canActivate: [AuthGuard, UserGuard] },
+    { path: 'share/store/:storeId', component: UserresourcesComponent, canActivate: [AuthGuard, UserGuard] },
     { path: 'share/gestioninventario/itemList/:itemId', component: GestionInListComponent, canActivate: [AuthGuard, RoleGuard] },
     { path: 'share/solicitudes', component: SolicitudesComponent, canActivate: [AuthGuard, RoleGuard] },
     { path: '**', pathMatch: 'full', redirectTo: 'share' }

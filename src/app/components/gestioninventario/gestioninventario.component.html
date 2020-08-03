@@ -1,18 +1,20 @@
 <app-navbar [icon]="icon" [redirectionRoute]="redirectionRoute" [componentName]="componentName"></app-navbar>
-
 <div *ngIf="laboratorios" class="u-background-color">
-    <div class="row">
-        <div class="col-6 title">
+    <div class="row title ">
+        <div class="col-10 ">
             <span class="h1 color-dark-blue">Recursos del Laboratorio</span>
         </div>
-        <div class="search-bar col-8">
-            <input type="text" class="form-control" name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">
+        <div class="my-2 col-2 mx-auto">
+            <button href="#" class="btn btn-success text-white my-1 mx-auto" (click)="isOn = true">
+                <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo Recurso</span> </button>
         </div>
     </div>
-
+    <div *ngIf="!isOn" class="row mx-2">
+        <div class=" col-8 ">
+            <input type="text" class="form-control radius" name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">
+        </div>
+    </div>
     <div>
-        <button href="#" class="btn btn-success text-white my-3 mx-4" (click)="isOn = true">
-            <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo Recurso</span> </button>
         <div class="container text-center " *ngIf="isOn">
             <div class="bg-white radius">
                 <h5 class=" text-info">Nuevo Item</h5>
@@ -35,9 +37,9 @@
             </div>
         </div>
     </div>
-    <div class="row " *ngIf="!isOn">
-        <div *ngFor="let recurso of recursos | filter:filterPost" class=" border-success col-3 card text-center " style="width: 25rem; " class="container ">
-            <div class="my-4 card w-100 text-center ">
+    <div class="row my-4" *ngIf="!isOn">
+        <div *ngFor="let recurso of recursos | filter:filterPost | paginate: { itemsPerPage: 3, currentPage: pageActual }" class=" border-success col-3 card text-center" style="width: 25rem; " class="container ">
+            <div class=" card w-100 text-center mx-auto">
                 <div class="card-header bg-warning border-secondary "> </div>
                 <div class="card-body ">
                     <!-- <img class="card-img-top " [src]="recurso.img " alt="Recurso del laboratorio" width="65% " alt="45"> -->
@@ -52,5 +54,11 @@
                 </div>
             </div>
         </div>
+        <div class="mx-auto my-3">
+            <pagination-controls class=" custom-pagination text-primary" (pageChange)="pageActual = $event"></pagination-controls>
+        </div>
+    </div>
+    <div class="">
+        <br>
     </div>
 </div>

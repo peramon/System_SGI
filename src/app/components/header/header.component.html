@@ -11,15 +11,28 @@
 
 <nav class="d-nav navbar navbar-expand-lg navbar-light">
     <img class="nav-item" src="assets/img/background_login6.png " width="2%" height="auto" alt="" class="img-fluid">
-    <div class="nav-item mx-4 header_leter ">
-        <h5 cl>SGI</h5>
+    <div class="nav-item mx-4 header_leter " *ngIf="solOn">
+        <h5>SGI - Laboratorios</h5>
+    </div>
+    <div class="nav-item mx-4 header_leter " *ngIf="!solOn">
+        <h5>SGI - Dashboard</h5>
     </div>
     <div class="ml-auto text-center header_nav2">
         <ul class="header_nav2">
             <li class="my-1">{{ displayName }}</li>
             <li class="mx-5">
-                <a href=""><img class="" src="./assets/icon's/icon_user.png" alt=""></a>
+                <a href=""></a>
             </li>
         </ul>
+    </div>
+    <div ngbDropdown class="" role="group" placement="bottom">
+        <button class="btn btn-outline-secondary " ngbDropdownToggle id=""><img class="" src="./assets/icon's/icon_user.png" alt=""></button>
+        <div ngbDropdownMenu aria-labelledby="midrop1">
+            <button ngbDropdownItem *ngIf="solOn" class="btn btn-primary" [routerLink]="['gestionprestamo']">Solicitudes</button>
+            <button ngbDropdownItem class="btn btn-warning " (click)="logOut() ">Cerrar sesión</button>
+        </div>
+    </div>
+    <div>
+        <p class="mx-5 "></p>
     </div>
 </nav>

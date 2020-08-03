@@ -1,14 +1,14 @@
 <app-navbar [icon]="icon" [redirectionRoute]="redirectionRoute" [componentName]="componentName"></app-navbar>
 
-<div class="row u-background-color">
+<div class="mx-2  text-center row ">
     <!-- <div class="col-12">
         <span class="h3 color-dark-blue">Solicitudes</span>
     </div> -->
-    <div class="col-12 row">
-        <div *ngFor="let request of requests" class="card col-3">
+    <div class="mx-auto text-left col-12 row">
+        <div *ngFor="let request of requests | paginate: { itemsPerPage: 3, currentPage: pageActual }" class="card col-3 fondo mx-auto">
             <img class="card-img-top" src="holder.js/100x180/" alt="">
             <div class="card-body">
-                <h4 class="card-title">Item: {{ request.store_item.item.name }}</h4>
+                <h4 class="card-title text-center">Item: {{ request.store_item.item.name }}</h4>
                 <p class="card-text"><strong>Fecha de solicitud: </strong>{{ request.created_at | date: 'dd/MM/yyyy' }}</p>
                 <p class="card-text"><strong>Solicitante: </strong>{{ request.borrower.name }} {{ request.borrower.lastname}}</p>
                 <p class="card-text"><strong>Tutor: </strong>{{ request.tutor.name }} {{ request.tutor.lastname}}</p>
@@ -17,11 +17,16 @@
                 <p class="card-text"><strong>Status: </strong>{{request.status.name}}</p>
             </div>
 
-            <div class="card-footer">
+            <div class="mx-auto card-footer">
                 <!--TODO controlar los botonos al momento de actualizar el estado del prestamo-->
                 <button type="button" class="btn btn-success" (click)="idBorrow = request.id; statusBorrow.status = 2 ;updateBorrow()">Aprobar</button>
                 <button type="button" class="btn btn-outline-danger" (click)="idBorrow = request.id; statusBorrow.status = 3 ;updateBorrow()">Rechazar</button>
             </div>
         </div>
     </div>
+    <div class="mx-auto">
+        <br>
+        <pagination-controls class=" custom-pagination text-primary" (pageChange)="pageActual = $event"></pagination-controls>
+    </div>
+    <br>
 </div>

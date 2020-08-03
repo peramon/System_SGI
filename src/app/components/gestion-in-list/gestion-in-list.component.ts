@@ -38,8 +38,11 @@ export class GestionInListComponent implements OnInit {
   select = 'Seleccione';
   idItem;
 
+  // Paginacion
+  pageActual = 1;
+
   item = {
-    acquisition_date: '2020-07-23',
+    acquisition_date: '2020-08-02',
     item: '',
     status: '',
     store: ''
@@ -90,6 +93,7 @@ export class GestionInListComponent implements OnInit {
       this.itemService.saveItem(this.item);
       console.log('Salvado');
       console.log('Status', status);
+      this.isOn = false;
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -99,7 +103,12 @@ export class GestionInListComponent implements OnInit {
       }).then(val => {location.reload(); });
       // TODO añadir una alerta chevere
     }else{
-      console.log('Fallo el registro del item');
+      console.log('LLene los campos');
+      Swal.fire(
+        'No se puede agregar un nuevo Item',
+        'Por favor seleccione el estado del Item',
+        'warning'
+      )
     }
   }
 
@@ -140,20 +149,29 @@ export class GestionInListComponent implements OnInit {
       }
     });
   }
-
-  updateItem(idItem, status){
-    this.item.item = this.idProducto;
-    this.item.status = status;
-    this.item.store = this.lab.id;
-    console.log('id', idItem);
-    this.itemService.updateItem(idItem, this.item);
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Item modificado correctamente',
-      showConfirmButton: false,
-      timer: 1300
-    }).then(val => {location.reload(); });
+  getStatus(status){
+    if(status === 1){
+      this.select = 'Disponible';
+    }else if(status === 2){
+      this.select = 'Prestado';
+    }else if(status === 3){
+      this.select = 'Reparación';
+    }
   }
-
+  updateItem(idItem, status){
+      this.item.item = this.idProducto;
+      this.item.status = status;
+      this.item.store = this.lab.id;
+      console.log('id', idItem);
+      this.itemService.updateItem(idItem, this.item);
+      this.isMod = false;
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Item modificado correctamente',
+        showConfirmButton: false,
+        timer: 1300
+      }).then(val => {location.reload(); });
+    }
+   
 }
