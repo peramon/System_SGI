@@ -14,9 +14,9 @@ export class UserlabComponent implements OnInit {
   redirectionRoute = 'share';
   icon = 'icon_laboratories.png';
 
+  filterPost = '';
   // Pagination
   pageActual = 1;
-  
   constructor(private dataStore: LabService) { }
 
   ngOnInit(): void {

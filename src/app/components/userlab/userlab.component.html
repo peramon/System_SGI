@@ -14,7 +14,7 @@
                 Buscar
             </h3>
             <div class=" h-50 search col-10 ">
-                <input type=" text " class="mx-4 my-1 search form-control " name="filterPost " placeholder="Buscar por nombre ">
+                <input type=" text " class="mx-4 my-1 search form-control " name="filterPost " placeholder="Buscar por nombre " [(ngModel)]="filterPost">
             </div>
             <!--<input type="text " class="mx-4 my-2 search form-control bg-secondary " name="filterPost " placeholder="Buscar por nombre " [(ngModel)]="filterPost ">-->
         </div>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="labs row  fondo  ">
-        <div *ngFor="let laboratorio of laboratorios |  paginate: { itemsPerPage: 3, currentPage: pageActual }" class=" border-success col-4 card text-center " style="width: 30rem; " class="container ">
+        <div *ngFor="let laboratorio of laboratorios | filter:filterPost | paginate: { itemsPerPage: 3, currentPage: pageActual }" class=" border-success col-4 card text-center " style="width: 30rem; " class="container ">
             <div class="my-2 card w-100 text-center mx-auto">
                 <div class="card-header bg-info border-secondary "> </div>
                 <div class="card-body ">
