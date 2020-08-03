@@ -68,7 +68,7 @@ export class SolicitudComponent implements OnInit, OnDestroy {
     };
     await this.borrowService.create(borrow);
     // TODO Mejorar alerta por algo mas guapo
-    Swal.fire('Solicitud creada correctamente!', 'Se notificará a tu correo electrónico cuando esta sea atendida', 'success')
+    Swal.fire('Solicitud creada correctamente!', 'Se notificará a tu correo electrónico cuando esta sea atendida', 'success');
     this.activeModal.close();
   }
   ngOnDestroy() {

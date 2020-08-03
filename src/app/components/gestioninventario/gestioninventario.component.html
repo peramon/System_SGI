@@ -1,41 +1,52 @@
 <app-navbar [icon]="icon" [redirectionRoute]="redirectionRoute" [componentName]="componentName"></app-navbar>
 
-<div *ngIf="laboratorios" class="u-background-color">
-    <div class="row">
-        <div class="col-6 title">
-            <span class="h1 color-dark-blue">Recursos del Laboratorio</span>
-        </div>
-        <div class="search-bar col-8">
-            <input type="text" class="form-control" name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">
-        </div>
-    </div>
+<div *ngIf="laboratorios" class="u-background-color row">
 
-    <div>
-        <button href="#" class="btn btn-success text-white my-3 mx-4" (click)="isOn = true">
-            <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo Recurso</span> </button>
-        <div class="container text-center " *ngIf="isOn">
-            <div class="bg-white radius">
-                <h5 class=" text-info">Nuevo Item</h5>
-                <div class="row ">
-                    <div class="col-5 mx-5 my-3">
-                        <p>Photo</p>
+    <div class="col-12 row" *ngIf="isOn">
+        <div class="col-12 row">
+            <div class="col-10 title">
+                <span class="h1 color-dark-blue">Registrar nuevo recurso</span>
+            </div>
+            <div class="col-6 div-centered">
+                <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="itemName">Nombre*</label>
+                        <input type="text" formControlName="itemName" id="" class="form-control" placeholder="" aria-describedby="helpId">
                     </div>
-                    <div class="col-5  my-3">
-                        <input class="form-control" type="text" placeholder="Ingrese el nombre">
-
-                        <textarea class="my-3 form-control" name="" id="" cols="60" rows="10" placeholder="Ingrese la descripción"></textarea>
+                    <div class="form-group">
+                        <label for="itemDescription">Descripción*</label>
+                        <textarea type="text" formControlName="itemDescription" id="" class="form-control" placeholder="" rows="2" cols="4"></textarea>
                     </div>
-                </div>
-                <button class="my-2 btn btn-success">
-                        Agregar
-                     </button>
-                <button class="mx-5 btn btn-danger" (click)="isOn = false">
-                       Cancelar
-                    </button>
+                    <div class="form-group">
+                        <input type="file" formControlName="itemImg" name="itemImg" (change)="onFileSelect($event)" />
+                        <img width="50%" class="display" alt="image" [src]="imageUrl" *ngIf="imageUrl">
+                    </div>
+                    <div class="float-right">
+                        <button class="btn btn-outline-danger" (click)="cancel()">
+                                    Cancelar
+                                </button>
+                        <button [disabled]="uploadForm.invalid" class="btn btn-primary">
+                                    Enviar
+                                </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <div class="row " *ngIf="!isOn">
+
+    <div class="col-12 row" *ngIf="!isOn">
+        <div class="col-12 row">
+            <div class="col-10 title">
+                <span class="h1 color-dark-blue">Recursos del Laboratorio</span>
+            </div>
+            <div class="search-bar col-8">
+                <input type="text" class="form-control" name="filterPost" placeholder="Buscar por nombre" [(ngModel)]="filterPost">
+            </div>
+            <div class="col-3">
+                <button href="#" class="btn btn-success text-white my-3 mx-4" (click)="isOn = true">
+                    <fa-icon [icon]="faPlusCircle"></fa-icon> <span> Nuevo Recurso</span> </button>
+            </div>
+        </div>
         <div *ngFor="let recurso of recursos | filter:filterPost" class=" border-success col-3 card text-center " style="width: 25rem; " class="container ">
             <div class="my-4 card w-100 text-center ">
                 <div class="card-header bg-warning border-secondary "> </div>

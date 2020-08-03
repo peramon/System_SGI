@@ -62,4 +62,9 @@ export class ItemsService {
     return this.http.delete(urlApi2);
   }
 
+  async createItem(body: FormData): Promise<any>{
+    const urlApi = `${environment.apiUrl}/items`;
+    return this.http.post(urlApi, body).toPromise();
+  }
+
 }
