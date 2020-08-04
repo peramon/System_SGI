@@ -31,11 +31,7 @@ export class LoginComponent implements OnInit {
       password: values.password
     }).subscribe({
       next: data => {
-        Swal.fire(
-          'Ingreso exitoso!',
-          'click para continuar!',
-          'success'
-        );
+        Swal.fire('Bienvenido', 'Ingreso realizado exitosamente', 'success');
         localStorage.setItem('accessToken', data.jwt);
         localStorage.setItem('currentUser', JSON.stringify(data.user));
         this.router.navigate(['/share']);

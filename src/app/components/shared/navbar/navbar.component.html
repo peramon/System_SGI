@@ -1,17 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light component-title">
-    <div class="nav navbar-nav">
-        <a class="nav-item nav-link" href="/{{redirectionRoute}}">
-            <fa-icon [icon]="faArrowLeft" size="lg" class="back-icon"></fa-icon>
-        </a>
-        <!-- <div class="nav-item">
+<nav class="d-nav navbar navbar-expand-lg navbar-light">
+    <!-- <div class="nav navbar-nav"> -->
+    <a class="nav-item nav-link" href="/{{redirectionRoute}}">
+        <fa-icon [icon]="faArrowLeft" size="lg" class="back-icon"></fa-icon>
+    </a>
+    <!-- <div class="nav-item">
             <img class="title_icon" src="./assets/icon's/{{icon}}" alt="">
         </div> -->
 
-        <div class="nav-item">
-            <span>{{ componentName }}</span>
+    <div class="nav-item">
+        <span>{{ componentName }}</span>
+    </div>
+    <!-- </div> -->
+
+    <div class="ml-auto text-center header_nav2">
+        <ul class="header_nav2">
+            <li class="my-1">{{ displayName }}</li>
+            <li class="mx-5">
+                <a href=""></a>
+            </li>
+        </ul>
+    </div>
+    <div ngbDropdown class="" role="group" placement="bottom">
+        <button class="btn text-white " ngbDropdownToggle id=""><img class="" src="./assets/icon's/icon_user.png" alt=""></button>
+        <div ngbDropdownMenu aria-labelledby="midrop1">
+            <button ngbDropdownItem class="btn btn-warning " (click)="logOut() ">Cerrar sesión</button>
         </div>
+    </div>
+    <div>
+        <p class="mx-5 "></p>
     </div>
 </nav>
 <div class="line">
-    <br>
-</div>

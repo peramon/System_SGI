@@ -37,7 +37,6 @@ export class GestioninventarioComponent implements OnInit {
   // Pagination
   pageActual = 1;
   filterPost = '';
-  //private items: ItemInterface;
   ngOnInit(): void {
     this.getListItems();
     this.uploadForm = this.formBuilder.group({
@@ -49,32 +48,15 @@ export class GestioninventarioComponent implements OnInit {
 
   async getListItems() {
     this.laboratorios = JSON.parse(localStorage.getItem('lab'));
-    /*this.dataItems.getItems().subscribe(items => {
-      console.log(items);
-      this.recursos = items;
-    });*/
     this.recursos = await this.dataStore.getStoreItems(this.laboratorios.id);
     console.log({ recursos: this.recursos });
-    /* this.dataItems.getItems().subscribe((resp: any) => {
-       this.items = resp;
-       console.log(this.items);
-     });*/
-    //this.dataItems.getItems().subscribe((items: ItemInterface) => (this.items = items ));
   }
-
-  /*  getLab(){
-      this.laboratorios  = JSON.parse(localStorage.getItem('lab'));
-     /* this.dataStore.getLabId(id).subscribe((labs) => {
-        console.log('TestLab',labs);
-        this.laboratorios = labs;
-        });
-    }*/
 
   getList() {
     this.router.navigate(['share/gestioninventario/itemList']);
   }
   onFileSelect(event) {
-    if (event.target.files > 0) {
+    if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.get('itemImg').setValue(file);
     }
@@ -95,20 +77,12 @@ export class GestioninventarioComponent implements OnInit {
     formData.append('data', JSON.stringify(itemData));
     formData.append('files.img', this.uploadForm.get('itemImg').value);
     const res = await this.dataItems.createItem(formData);
+    console.log({ res });
     Swal.fire('Item creado correctamente!', `El item: ${itemData.name} se ha creado satisfactoriamente!`, 'success');
     location.reload();
   }
 
   cancel() {
     this.isOn = false;
-  }
-
-  handleFileInput(file: FileList) {
-    this.fileToUpload = file.item(0);
-    const reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.imageUrl = event.target.result;
-    };
-    reader.readAsDataURL(this.fileToUpload);
   }
 }

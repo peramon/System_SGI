@@ -39,7 +39,7 @@ import { AutocompleteLibModule, AutocompleteLibComponent } from 'angular-ng-auto
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 

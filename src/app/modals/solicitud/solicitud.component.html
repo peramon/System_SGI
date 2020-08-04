@@ -12,7 +12,7 @@
             <input class="form-control" type="text" name="issuedItem" id="issuedItem" value="{{resource.name}}" disabled>
         </div>
         <div class="form-group">
-            <span class="h6" for="selectTutor">Selecciona tu tutor:</span>
+            <span class="h6" for="selectTutor">Selecciona tu tutor:* </span>
 
             <ng-autocomplete name="selectTutor" (selected)='selectEvent($event)' [data]="tutors" [searchKeyword]="keyword" [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" placeholder="Ingresa el nombre de tu tutor">
             </ng-autocomplete>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            <label class="h6" for="dateLimit">Fecha de devolución: </label>
+            <label class="h6" for="dateLimit">Fecha de devolución:* </label>
             <input formControlName="date_limit" class="form-control" type="datetime-local" name="dateLimit" id="dateLimit">
         </div>
 
@@ -38,7 +38,7 @@
 
         <div class="text-center form-group">
             <button type="button" class="btn btn-outline-danger" (click)="activeModal.dismiss()">Cancelar</button>
-            <button type="button" type="submit" class="btn btn-success">Enviar</button>
+            <button type="button" type="submit" class="btn btn-success" [disabled]="borrowForm.invalid">Enviar</button>
         </div>
     </form>
 </div>
