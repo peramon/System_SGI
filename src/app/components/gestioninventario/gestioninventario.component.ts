@@ -5,6 +5,8 @@ import ItemInterface from '../../models/item/item-interface';
 import { LabService } from '../../services/lab.service';
 import { LabInterface } from '../../models/lab-interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 import Swal from 'sweetalert2';
 
 import { faArrowLeft, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
@@ -33,7 +35,7 @@ export class GestioninventarioComponent implements OnInit {
   faPlusCircle = faPlusCircle;
 
   uploadForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router, private dataItems: ItemsService, private dataStore: LabService) { }
+  constructor(private spinner: NgxSpinnerService, private formBuilder: FormBuilder, private router: Router, private dataItems: ItemsService, private dataStore: LabService) { }
   // Pagination
   pageActual = 1;
   filterPost = '';
@@ -68,6 +70,7 @@ export class GestioninventarioComponent implements OnInit {
     reader.readAsDataURL(event.target.files[0]);
   }
   async onSubmit() {
+    this.spinner.show();
     const formData = new FormData();
     const itemData = {
       name: this.uploadForm.get('itemName').value,
@@ -76,8 +79,8 @@ export class GestioninventarioComponent implements OnInit {
     };
     formData.append('data', JSON.stringify(itemData));
     formData.append('files.img', this.uploadForm.get('itemImg').value);
-    const res = await this.dataItems.createItem(formData);
-    console.log({ res });
+    await this.dataItems.createItem(formData);
+    this.spinner.hide();
     Swal.fire('Item creado correctamente!', `El item: ${itemData.name} se ha creado satisfactoriamente!`, 'success');
     location.reload();
   }
