@@ -66,7 +66,7 @@ export class GestionInListComponent implements OnInit {
     this.itemService.getItemId(this.idProducto).subscribe((items: any) => {
       this.recurso = items;
       const storeItems = this.recurso.store_items;
-
+      console.log('Recurso', this.recurso);
       storeItems.forEach(sitem => {
         console.log(sitem.status)
         if (sitem.status === 1) {

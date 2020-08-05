@@ -223,6 +223,11 @@
     .brt {
         line-height: 50%;
     }
+    
+    .brt2 {
+        line-height: 50%;
+        background-color: #014170;
+    }
     /*Pagination Style*/
     
     .custom-pagination /deep/ .ngx-pagination .current {

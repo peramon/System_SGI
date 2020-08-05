@@ -1,11 +1,12 @@
 <app-navbar [icon]="icon" [redirectionRoute]="redirectionRoute" [componentName]="recurso.name"></app-navbar>
-<div class="row">
+<div class="row bg-white">
     <div class="col-12">
         <h2 class="color title_span">Detalle: {{recurso.name}}</h2>
     </div>
     <div class="col row my-2 mx-1 radius">
         <div class="col-sm-4 my-3 text-center  radius">
-            <img src="assets/img/background_login6.png " width="50%" height=" " alt="Item del laboratorio" class="img-fluid ">
+            <!--<img src="assets/img/background_login6.png " width="50%" height=" " alt="Item del laboratorio" class="img-fluid ">-->
+            <img class=" " [src]="recurso.img.url" alt="Recurso del laboratorio" width="35% ">
             <p class="color">Total de Unidades {{recurso.store_items.length}}</p>
         </div>
         <div class="col-sm-7 mx-4 my-3 fondo radius">

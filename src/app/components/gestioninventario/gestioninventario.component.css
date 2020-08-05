@@ -34,3 +34,8 @@ input::placeholder {
 .card {
     margin: 1em;
 }
+
+.imagen {
+    width: 150;
+    height: 150px;
+}
