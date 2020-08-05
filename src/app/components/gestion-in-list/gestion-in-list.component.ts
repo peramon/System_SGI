@@ -42,7 +42,7 @@ export class GestionInListComponent implements OnInit {
   pageActual = 1;
 
   item = {
-    acquisition_date: '2020-08-02',
+    acquisition_date: '2020-08-05',
     item: '',
     status: '',
     store: ''
